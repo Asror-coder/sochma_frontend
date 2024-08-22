@@ -1,3 +1,6 @@
 {
-    "helloWorld" : "Salom Olam :)"
+    "helloWorld" : "Salom Olam :)",
+    "login" : "Kirish",
+    "signup" : "Ro'yxat",
+    "signup_button" : "Ro'yxatdan o'tish"
 }   
