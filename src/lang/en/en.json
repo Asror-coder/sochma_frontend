@@ -2,5 +2,8 @@
     "helloWorld" : "Hello World :)",
     "login" : "Login",
     "signup" : "Sign up",
-    "signup_button" : "Sign up"
+    "signup_button" : "Sign up",
+    "upcomingTrips" : "Upcoming trips",
+    "pastTrips" : "Past trips",
+    "newTrip" : "New Trip"
 }   

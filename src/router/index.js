@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import LoginView from '../views/LoginView.vue'
-import SignupView from '@/views/SignupView.vue'
+import HomeView from '../views/Dashboard/Home/HomeView.vue'
+import LoginView from '../views/Auth/LoginView.vue'
+import SignupView from '@/views/Auth/SignupView.vue'
+import UpcomingTripsView from '@/views/Dashboard/UpcomingTrips/UpcomingTripsView.vue'
+import PastTripsView from '@/views/Dashboard/PastTrip/PastTripsView.vue'
+import NewTripView from '@/views/Dashboard/NewTrips/NewTripView.vue'
 
 const routes = [
   {
@@ -18,6 +21,21 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignupView
+  },
+  {
+    path: '/upcoming-trips',
+    name: 'upcomingTrips',
+    component: UpcomingTripsView
+  },
+  {
+    path: '/past-trips',
+    name: 'pastTrips',
+    component: PastTripsView
+  },
+  {
+    path: '/new-trip',
+    name: 'newTrip',
+    component: NewTripView
   },
 ]
 

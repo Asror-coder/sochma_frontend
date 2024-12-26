@@ -2,5 +2,8 @@
     "helloWorld" : "Salom Olam :)",
     "login" : "Kirish",
     "signup" : "Ro'yxat",
-    "signup_button" : "Ro'yxatdan o'tish"
+    "signup_button" : "Ro'yxatdan o'tish",
+    "upcomingTrips" : "Kelgusi safarlar",
+    "pastTrips" : "O'tgan safarlar",
+    "newTrip" : "Yangi safar"
 }   
