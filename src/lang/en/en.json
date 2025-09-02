@@ -1,9 +1,22 @@
 {
     "helloWorld" : "Hello World :)",
-    "login" : "Login",
-    "signup" : "Sign up",
-    "signup_button" : "Sign up",
-    "upcomingTrips" : "Upcoming trips",
-    "pastTrips" : "Past trips",
-    "newTrip" : "New Trip"
+    "Auth" : {
+        "login" : "Login",
+        "signup" : "Sign up",
+        "signup_button" : "Sign up"
+    },
+    "PaymentsPage" : {
+        "Payments" : "Payments"
+    },
+    "HomePage" : {
+        "Home" : "Home"
+    },
+    "DealsPage" : {
+        "Deals" : "Deals"
+    },
+    "CalculatorPage" : {
+        "Calculator" : "Calculator",
+        "Calculate" : "Calculate",
+        "Investment" : "Investment"
+    }
 }   

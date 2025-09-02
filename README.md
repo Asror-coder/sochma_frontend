@@ -1,8 +1,25 @@
 source $(brew --prefix nvm)/nvm.sh 
 
-# eauction_front
+# sochma_front
 
-This template should help get you started developing with Vue 3 in Vite.
+## Application Structure
+
+![app_structure](structure.png)
+
+├── index.html
+├── main.js
+├── api
+│   └── ...               # abstractions for making API requests
+├── components
+│   ├── App.vue
+│   └── ...
+└── store
+    ├── index.js          # where we assemble modules and export the store
+    ├── actions.js        # root actions
+    ├── mutations.js      # root mutations
+    └── modules
+        ├── cart.js       # cart module
+        └── products.js   # products module
 
 ## Recommended IDE Setup
 

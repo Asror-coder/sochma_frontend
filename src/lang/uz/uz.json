@@ -1,9 +1,22 @@
 {
     "helloWorld" : "Salom Olam :)",
-    "login" : "Kirish",
-    "signup" : "Ro'yxat",
-    "signup_button" : "Ro'yxatdan o'tish",
-    "upcomingTrips" : "Kelgusi safarlar",
-    "pastTrips" : "O'tgan safarlar",
-    "newTrip" : "Yangi safar"
+    "Auth" : {
+        "login" : "Kirish",
+        "signup" : "Ro'yxat",
+        "signup_button" : "Ro'yxatdan o'tish"
+    },
+    "PaymentsPage" : {
+        "Payments" : "To'lovlar"
+    },
+    "HomePage" : {
+        "Home" : "Bosh sahifa"
+    },
+    "DealsPage" : {
+        "Deals" : "Bitimlaral"
+    },
+    "CalculatorPage" : {
+        "Calculator" : "Kalkulyator",
+        "Calculate" : "Hisoblash",
+        "Investment" : "Sarmoya"
+    }
 }   

@@ -1,9 +1,22 @@
 {
     "helloWorld" : "Привет Мир :)",
-    "login" : "Войти",
-    "signup" : "Регистрация",
-    "signup_button" : "Зарегистрироваться",
-    "upcomingTrips" : "Предстоящие поездки",
-    "pastTrips" : "Прошлые поездки",
-    "newTrip" : "Новая поездка"
+    "Auth" : {
+        "login" : "Войти",
+        "signup" : "Регистрация",
+        "signup_button" : "Зарегистрироваться"
+    },
+    "PaymentsPage" : {
+        "Payments" : "Платежи"
+    },
+    "HomePage" : {
+        "Home" : "Главная"
+    },
+    "DealsPage" : {
+        "Deals" : "Сделки"
+    },
+    "CalculatorPage" : {
+        "Calculator" : "Калькулятор",
+        "Calculate" : "Рассчитать",
+        "Investment" : "Инвестиции"
+    }
 }   

@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/Dashboard/Home/HomeView.vue'
-import LoginView from '../views/Auth/LoginView.vue'
-import SignupView from '@/views/Auth/SignupView.vue'
-import UpcomingTripsView from '@/views/Dashboard/UpcomingTrips/UpcomingTripsView.vue'
-import PastTripsView from '@/views/Dashboard/PastTrip/PastTripsView.vue'
-import NewTripView from '@/views/Dashboard/NewTrips/NewTripView.vue'
+import HomeView from '@/components/Home/HomeView.vue'
+import PaymentsView from '@/components/Payments/PaymentsView.vue'
+import LoginView from '@/components/Auth/LoginView.vue'
+import SignupView from '@/components/Auth/SignupView.vue'
+import DealsView from '@/components/Deals/DealsView.vue'
+import CalculatorView from '@/components/Calculator/CalculatorView.vue'
+
 
 const routes = [
   {
@@ -23,19 +24,19 @@ const routes = [
     component: SignupView
   },
   {
-    path: '/upcoming-trips',
-    name: 'upcomingTrips',
-    component: UpcomingTripsView
+    path: '/deals',
+    name: 'deals',
+    component: DealsView
   },
   {
-    path: '/past-trips',
-    name: 'pastTrips',
-    component: PastTripsView
+    path: '/payments',
+    name: 'payments',
+    component: PaymentsView
   },
   {
-    path: '/new-trip',
-    name: 'newTrip',
-    component: NewTripView
+    path: '/calculator',
+    name: 'calculator',
+    component: CalculatorView
   },
 ]
 
