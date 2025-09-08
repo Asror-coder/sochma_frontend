@@ -12,12 +12,21 @@
     </div>
 
     <div class="grid grid-cols-2 pr-4">
-      <div class="flex justify-center border-gray-300 border-2 mr-1 rounded-md">
-        <router-link :to="{name: 'signup' }">{{ $t('Auth.signup') }}</router-link>
-      </div>
-      <div class="flex justify-center bg-blue-500 text-white ml-1 rounded-md">
-        <router-link :to="{name: 'login' }">{{ $t('Auth.login') }}</router-link>
-      </div>
+      <template v-if="isLoggedIn">
+        <div class="flex justify-center border-white border-2 mr-1 rounded-md">
+        </div>
+        <div class="flex justify-center border-gray-300 border-2 mr-1 rounded-md">
+          <button @click="logout">{{ $t('Auth.logout') }}</button>
+        </div>
+      </template>
+      <template v-else>
+        <div class="flex justify-center border-gray-300 border-2 mr-1 rounded-md">
+          <router-link :to="{name: 'signup' }">{{ $t('Auth.signup') }}</router-link>
+        </div>
+        <div class="flex justify-center bg-blue-500 text-white ml-1 rounded-md">
+          <router-link :to="{name: 'login' }">{{ $t('Auth.login') }}</router-link>
+        </div>
+      </template>
     </div>
 
   </header>
@@ -26,6 +35,21 @@
 </template>
 
 <script setup>
-  import LanguageSwitcher from './LanguageSwitcher.vue';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import LanguageSwitcher from './LanguageSwitcher.vue';
 
+const router = useRouter();
+const isLoggedIn = ref(!!localStorage.getItem('token'));
+
+function logout() {
+  localStorage.removeItem('token');
+  isLoggedIn.value = false;
+  router.push({ name: 'login' });
+}
+
+// Listen for changes to localStorage (optional, for multi-tab support)
+window.addEventListener('storage', () => {
+  isLoggedIn.value = !!localStorage.getItem('token');
+});
 </script>

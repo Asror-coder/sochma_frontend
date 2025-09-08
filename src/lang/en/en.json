@@ -8,9 +8,11 @@
         "last_name_placeholder": "Your last name",
         "login_placeholder": "Your account name",
         "phone_placeholder": "Your phone number",
-        "password_placeholder": "Your new password",
+        "password_placeholder": "Your password",
+        "password_new_placeholder": "Your new password",
         "repeat_password_placeholder": "Repeat password",
-        "birth_day_placeholder": "Your date of birth"
+        "birth_day_placeholder": "Your date of birth",
+        "logout": "Logout"
     },
     "PaymentsPage" : {
         "Payments" : "Payments"

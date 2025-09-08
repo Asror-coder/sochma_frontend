@@ -8,9 +8,11 @@
         "last_name_placeholder": "Familiyangiz",
         "login_placeholder": "Foydalanuvchi nomi",
         "phone_placeholder": "Telefon raqamingiz",
-        "password_placeholder": "Yangi parolingiz",
+        "password_placeholder": "Parolingiz",
+        "password_new_placeholder": "Yangi parolingiz",
         "repeat_password_placeholder": "Parolni qayta kiriting",
-        "birth_day_placeholder": "Tug‘ilgan sanangiz"
+        "birth_day_placeholder": "Tug‘ilgan sanangiz",
+        "logout": "Chiqish"
     },
     "PaymentsPage" : {
         "Payments" : "To'lovlar"

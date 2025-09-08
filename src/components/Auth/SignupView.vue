@@ -91,7 +91,7 @@
                                 type="password"
                                 name="password"
                                 id="password"
-                                :placeholder="$t('Auth.password_placeholder')"
+                                :placeholder="$t('Auth.password_new_placeholder')"
                                 class="bg-white border-2 w-full p-4 rounded-lg"
                                 v-model="password"
                                 :class="{'border-red-500': errors.password}"
