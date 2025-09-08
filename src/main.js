@@ -1,4 +1,5 @@
 // import './assets/main.css'
+import axios from 'axios'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -23,10 +24,14 @@ const i18n = createI18n({
     },
 })
 
+axios.defaults.baseURL = 'http://157.173.198.177:5115/'
+
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
 app.use(i18n)
+
+app.config.globalProperties.$axios = axios
 
 app.mount('#app')

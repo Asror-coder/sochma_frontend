@@ -3,7 +3,14 @@
     "Auth" : {
         "login" : "Войти",
         "signup" : "Регистрация",
-        "signup_button" : "Зарегистрироваться"
+        "signup_button" : "Зарегистрироваться",
+        "first_name_placeholder": "Ваше имя",
+        "last_name_placeholder": "Ваша фамилия",
+        "login_placeholder": "Имя пользователя",
+        "phone_placeholder": "Ваш номер телефона",
+        "password_placeholder": "Ваш новый пароль",
+        "repeat_password_placeholder": "Повторите пароль",
+        "birth_day_placeholder": "Ваша дата рождения"
     },
     "PaymentsPage" : {
         "Payments" : "Платежи"

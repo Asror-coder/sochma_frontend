@@ -3,7 +3,14 @@
     "Auth" : {
         "login" : "Login",
         "signup" : "Sign up",
-        "signup_button" : "Sign up"
+        "signup_button" : "Sign up",
+        "first_name_placeholder": "Your first name",
+        "last_name_placeholder": "Your last name",
+        "login_placeholder": "Your account name",
+        "phone_placeholder": "Your phone number",
+        "password_placeholder": "Your new password",
+        "repeat_password_placeholder": "Repeat password",
+        "birth_day_placeholder": "Your date of birth"
     },
     "PaymentsPage" : {
         "Payments" : "Payments"

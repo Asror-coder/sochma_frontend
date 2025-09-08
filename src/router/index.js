@@ -26,7 +26,10 @@ const routes = [
   {
     path: '/deals',
     name: 'deals',
-    component: DealsView
+    component: DealsView,
+    // meta: {
+    //   requiresAuth: true // Add meta field to indicate protected route
+    // }
   },
   {
     path: '/payments',
@@ -39,6 +42,22 @@ const routes = [
     component: CalculatorView
   },
 ]
+
+// router.beforeEach((to, from, next) => {
+//   if (to.meta.requiresAuth) {
+//     const token = localStorage.getItem('token');
+//     if (token) {
+//       // User is authenticated, proceed to the route
+//       next();
+//     } else {
+//       // User is not authenticated, redirect to login
+//       next('/login');
+//     }
+//   } else {
+//     // Non-protected route, allow access
+//     next();
+//   }
+// });
 
 const router = createRouter({
   history: createWebHistory(),

@@ -3,7 +3,14 @@
     "Auth" : {
         "login" : "Kirish",
         "signup" : "Ro'yxat",
-        "signup_button" : "Ro'yxatdan o'tish"
+        "signup_button" : "Ro'yxatdan o'tish",
+        "first_name_placeholder": "Ismingiz",
+        "last_name_placeholder": "Familiyangiz",
+        "login_placeholder": "Foydalanuvchi nomi",
+        "phone_placeholder": "Telefon raqamingiz",
+        "password_placeholder": "Yangi parolingiz",
+        "repeat_password_placeholder": "Parolni qayta kiriting",
+        "birth_day_placeholder": "Tug‘ilgan sanangiz"
     },
     "PaymentsPage" : {
         "Payments" : "To'lovlar"
