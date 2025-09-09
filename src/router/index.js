@@ -26,10 +26,7 @@ const routes = [
   {
     path: '/deals',
     name: 'deals',
-    component: DealsView,
-    // meta: {
-    //   requiresAuth: true // Add meta field to indicate protected route
-    // }
+    component: DealsView
   },
   {
     path: '/payments',
@@ -42,26 +39,21 @@ const routes = [
     component: CalculatorView
   },
 ]
-
-// router.beforeEach((to, from, next) => {
-//   if (to.meta.requiresAuth) {
-//     const token = localStorage.getItem('token');
-//     if (token) {
-//       // User is authenticated, proceed to the route
-//       next();
-//     } else {
-//       // User is not authenticated, redirect to login
-//       next('/login');
-//     }
-//   } else {
-//     // Non-protected route, allow access
-//     next();
-//   }
-// });
-
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+// Navigation guard to protect routes
+router.beforeEach((to, from, next) => {
+  const publicPages = ['login', 'signup'];
+  const authRequired = !publicPages.includes(to.name);
+  const loggedIn = !!localStorage.getItem('token');
+
+  if (authRequired && !loggedIn) {
+    return next({ name: 'login' });
+  }
+  next();
 });
 
 export default router

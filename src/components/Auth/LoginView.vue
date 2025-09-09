@@ -42,6 +42,16 @@
                             <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">{{ $t('Auth.login') }}</button>
                         </div>
                     </form>
+
+                    <div class="mt-4 flex justify-center">
+                        <button
+                            type="button"
+                            class="text-blue-500 underline hover:text-blue-700"
+                            @click="forgotPassword"
+                        >
+                            Forgot password?
+                        </button>
+                    </div>
                 </div>
             </div>
         </main>
@@ -95,6 +105,9 @@
                         // Handle generic error
                     }
                 }
+            },
+            forgotPassword() {
+                alert('Forgot password feature coming soon!');
             }
         }
     }
