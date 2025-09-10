@@ -1,31 +1,28 @@
 <template class="relative">
-  <header class="fixed grid grid-cols-6 py-5 shadow-md bg-white top-0 left-0 right-0">
+  <header class="fixed flex items-center justify-between py-5 shadow-md bg-white top-0 left-0 right-0 w-full">
 
-    <div class="flex justify-center text-green-800 font-bold">
+    <!-- Left side: Logo -->
+    <div class="flex items-center text-green-800 font-bold pl-6">
       <router-link :to="{name: 'home' }">SOCHMA</router-link>
     </div>
 
-    <div class="col-span-3"></div>
-
-    <div class="flex justify-center">
-      <LanguageSwitcher />
-    </div>
-
-    <div class="grid grid-cols-2 pr-4">
+    <!-- Right side: All items in one line -->
+    <div class="flex flex-row items-center gap-4 pr-6">
       <template v-if="isLoggedIn">
-        <div class="flex justify-center border-white border-2 mr-1 rounded-md">
-        </div>
-        <div class="flex justify-center border-gray-300 border-2 mr-1 rounded-md">
-          <button @click="logout">{{ $t('Auth.logout') }}</button>
-        </div>
+        <span class="text-green-800 font-semibold">{{ userName }}</span>
+        <LanguageSwitcher />
+        <button
+          @click="logout"
+          class="border-gray-300 border-2 rounded px-4 py-2 bg-gray-200 text-gray-900 hover:bg-gray-300 transition"
+        >
+          {{ $t('Auth.logout') }}
+        </button>
       </template>
+      
       <template v-else>
-        <div class="flex justify-center border-gray-300 border-2 mr-1 rounded-md">
-          <router-link :to="{name: 'signup' }">{{ $t('Auth.signup') }}</router-link>
-        </div>
-        <div class="flex justify-center bg-blue-500 text-white ml-1 rounded-md">
-          <router-link :to="{name: 'login' }">{{ $t('Auth.login') }}</router-link>
-        </div>
+        <LanguageSwitcher />
+        <router-link :to="{name: 'signup' }" class="border-gray-300 border-2 rounded px-4 py-2">{{ $t('Auth.signup') }}</router-link>
+        <router-link :to="{name: 'login' }" class="bg-blue-500 text-white rounded px-4 py-2">{{ $t('Auth.login') }}</router-link>
       </template>
     </div>
 
@@ -35,12 +32,20 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 import LanguageSwitcher from './LanguageSwitcher.vue';
 
 const router = useRouter();
+const store = useStore();
 const isLoggedIn = ref(!!localStorage.getItem('token'));
+
+// Get user's full name from Vuex user module
+const userName = computed(() => {
+  const user = store.getters['user/getUser'];
+  return user ? `${user.firstName} ${user.lastName}` : '';
+});
 
 function logout() {
   localStorage.removeItem('token');
@@ -48,7 +53,6 @@ function logout() {
   router.push({ name: 'login' });
 }
 
-// Listen for changes to localStorage (optional, for multi-tab support)
 window.addEventListener('storage', () => {
   isLoggedIn.value = !!localStorage.getItem('token');
 });

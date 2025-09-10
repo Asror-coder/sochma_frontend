@@ -1,26 +1,10 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from 'vuex'
+import userModule from './modules/user'
+import dealModule from './modules/deal'
 
-// Modules import
-import UserModule from 'modules/user'
-import DealsModule from 'modules/deal'
-
-Vue.use(Vuex)
-
-const state = {}
-const actions = ({})
-const mutations = ({})
-const getters = ({})
-
-// const modules = {
-//   user: userModule,
-//   deal: DealModule
-// }
-
-export default new Vuex.Store({
-  state,
-  actions,
-  mutations,
-  getters,
-  modules
+export default createStore({
+  modules: {
+    user: userModule,
+    deal: dealModule
+  }
 })

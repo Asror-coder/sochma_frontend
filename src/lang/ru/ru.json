@@ -18,10 +18,14 @@
         "Payments" : "Платежи"
     },
     "HomePage" : {
-        "Home" : "Главная"
+        "Home" : "Главная",
+        "welcomeMessage" : "Добро пожаловать на платформу Sochma! Изучайте наши услуги и управляйте своими инвестициями с легкостью."
     },
     "DealsPage" : {
-        "Deals" : "Сделки"
+        "Deals" : "Сделки",
+        "CurrentDeals": "Текущие сделки",
+        "PastDeals": "Прошлые сделки",
+        "NewDeal": "Новая сделка"
     },
     "CalculatorPage" : {
         "Calculator" : "Калькулятор",

@@ -18,10 +18,14 @@
         "Payments" : "To'lovlar"
     },
     "HomePage" : {
-        "Home" : "Bosh sahifa"
+        "Home" : "Bosh sahifa",
+        "welcomeMessage" : "Sochma platformasiga xush kelibsiz! Bizning xizmatlarimizni o'rganing va investitsiyalaringizni osonlik bilan boshqaring."
     },
     "DealsPage" : {
-        "Deals" : "Bitimlaral"
+        "Deals" : "Bitimlaral",
+        "CurrentDeals": "Joriy bitimlar",
+        "PastDeals": "O'tgan bitimlar",
+        "NewDeal": "Yangi bitim"
     },
     "CalculatorPage" : {
         "Calculator" : "Kalkulyator",

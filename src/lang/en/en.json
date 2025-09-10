@@ -18,10 +18,14 @@
         "Payments" : "Payments"
     },
     "HomePage" : {
-        "Home" : "Home"
+        "Home" : "Home",
+        "welcomeMessage" : "Welcome to the Sochma platform! Explore our services and manage your investments with ease."
     },
     "DealsPage" : {
-        "Deals" : "Deals"
+        "Deals" : "Deals",
+        "CurrentDeals": "Current Deals",
+        "PastDeals": "Past Deals",
+        "NewDeal": "New Deal"
     },
     "CalculatorPage" : {
         "Calculator" : "Calculator",
