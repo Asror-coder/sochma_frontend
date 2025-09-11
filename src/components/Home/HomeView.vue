@@ -29,7 +29,6 @@ export default {
   computed: {
     userFullName() {
       const user = this.$store.getters['user/getUser'];
-      console.log('User: ');
       if (user) {
         return `${user.firstName} ${user.lastName}`;
       }

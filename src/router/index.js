@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/components/Home/HomeView.vue'
-import PaymentsView from '@/components/Payments/PaymentsView.vue'
 import LoginView from '@/components/Auth/LoginView.vue'
 import SignupView from '@/components/Auth/SignupView.vue'
-import DealsView from '@/components/Deals/DealsView.vue'
 import CalculatorView from '@/components/Calculator/CalculatorView.vue'
+import NewDealView from '@/components/Deals/NewDealView.vue'
+import CurrentDealsView from '@/components/Deals/CurrentDealsView.vue'
+import PastDealsView from '@/components/Deals/PastDealsView.vue'
 
 
 const routes = [
@@ -24,14 +25,19 @@ const routes = [
     component: SignupView
   },
   {
-    path: '/deals',
-    name: 'deals',
-    component: DealsView
+    path: '/deal/new',
+    name: 'newDeal',
+    component: NewDealView
   },
   {
-    path: '/payments',
-    name: 'payments',
-    component: PaymentsView
+    path: '/deal/current',
+    name: 'currentDeals',
+    component: CurrentDealsView
+  },
+  {
+    path: '/deal/old',
+    name: 'oldDeals',
+    component: PastDealsView
   },
   {
     path: '/calculator',
