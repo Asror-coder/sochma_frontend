@@ -25,9 +25,7 @@
         "Deals" : "Bitimlaral",
         "CurrentDeals": "Joriy bitimlar",
         "PastDeals": "O'tgan bitimlar",
-        "NewDeal": "Yangi bitim"
-    },
-    "NewDeal": {
+        "NewDeal": "Yangi bitim",
         "Product": "Mahsulot",
         "Brand": "Brend",
         "Model": "Model",
@@ -52,7 +50,20 @@
     },
     "CalculatorPage" : {
         "Calculator" : "Kalkulyator",
-        "Calculate" : "Hisoblash",
-        "Investment" : "Sarmoya"
+        "Investment": "Sarmoya",
+        "TotalPayment": "Umumiy to'lov",
+        "MonthlyPayment": "Oylik to'lov",
+        "ProductPrice": "Mahsulot narxi",
+        "ProductPricePlaceholder": "Mahsulot narxini kiriting",
+        "Downpayment": "Oldindan to'lov",
+        "DownpaymentPlaceholder": "Oldindan to'lovni kiriting",
+        "Period": "Davr (oylar)",
+        "PeriodPlaceholder": "Davrni (oylarda) kiriting",
+        "ProfitMargin": "Foyda marjasi (%)",
+        "ProfitMarginPlaceholder": "Foyda marjasini kiriting",
+        "Calculate": "Hisoblash"
+    },
+    "Common": {
+        "Loading": "Yuklanmoqda..."
     }
-}   
+}

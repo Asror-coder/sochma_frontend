@@ -6,6 +6,7 @@ import CalculatorView from '@/components/Calculator/CalculatorView.vue'
 import NewDealView from '@/components/Deals/NewDealView.vue'
 import CurrentDealsView from '@/components/Deals/CurrentDealsView.vue'
 import PastDealsView from '@/components/Deals/PastDealsView.vue'
+import DealView from '@/components/Deals/DealView.vue'
 
 
 const routes = [
@@ -38,6 +39,11 @@ const routes = [
     path: '/deal/old',
     name: 'oldDeals',
     component: PastDealsView
+  },
+  {
+    path: '/deal/:id',
+    name: 'dealDetail',
+    component: DealView
   },
   {
     path: '/calculator',

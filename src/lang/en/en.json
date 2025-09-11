@@ -25,9 +25,7 @@
         "Deals" : "Deals",
         "CurrentDeals": "Current Deals",
         "PastDeals": "Past Deals",
-        "NewDeal": "New Deal"
-    },
-    "NewDeal": {
+        "NewDeal": "New Deal",
         "Product": "Product",
         "Brand": "Brand",
         "Model": "Model",
@@ -51,8 +49,21 @@
         "DealCreated": "New deal created!"
     },
     "CalculatorPage" : {
-        "Calculator" : "Calculator",
-        "Calculate" : "Calculate",
-        "Investment" : "Investment"
+        "Calculator": "Calculator",
+        "Investment": "Investment",
+        "TotalPayment": "Total payment",
+        "MonthlyPayment": "Monthly payment",
+        "ProductPrice": "Product price",
+        "ProductPricePlaceholder": "Enter product price",
+        "Downpayment": "Downpayment",
+        "DownpaymentPlaceholder": "Enter downpayment",
+        "Period": "Period (months)",
+        "PeriodPlaceholder": "Enter period in months",
+        "ProfitMargin": "Profit margin (%)",
+        "ProfitMarginPlaceholder": "Enter profit margin (%)",
+        "Calculate": "Calculate"
+    },
+    "Common": {
+        "Loading": "Loading..."
     }
-}   
+}

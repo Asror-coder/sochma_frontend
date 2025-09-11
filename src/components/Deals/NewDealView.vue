@@ -11,68 +11,69 @@
               <div class="flex flex-row gap-8 w-full">
                 <!-- Left side: Product Section -->
                 <div class="flex-1">
-                  <h2 class="text-lg font-semibold mb-2">{{ $t('NewDeal.Product') }}</h2>
+                  <h2 class="text-lg font-semibold mb-2">{{ $t('DealsPage.Product') }}</h2>
                   <div class="mb-4">
                     <div class="flex items-center mb-2">
-                      <span class="w-32">{{ $t('NewDeal.Brand') }}:</span>
-                      <input v-model="product.brand" type="text" :placeholder="$t('NewDeal.Brand')" class="flex-1 p-2 border rounded" />
+                      <span class="w-32">{{ $t('DealsPage.Brand') }}:</span>
+                      <input v-model="product.brand" type="text" :placeholder="$t('DealsPage.Brand')" class="flex-1 p-2 border rounded" />
                     </div>
                     <div class="flex items-center mb-2">
-                      <span class="w-32">{{ $t('NewDeal.Model') }}:</span>
-                      <input v-model="product.model" type="text" :placeholder="$t('NewDeal.Model')" class="flex-1 p-2 border rounded" />
+                      <span class="w-32">{{ $t('DealsPage.Model') }}:</span>
+                      <input v-model="product.model" type="text" :placeholder="$t('DealsPage.Model')" class="flex-1 p-2 border rounded" />
                     </div>
                     <div class="flex items-center mb-2">
-                      <span class="w-32">{{ $t('NewDeal.Year') }}:</span>
-                      <input v-model="product.year" type="text" :placeholder="$t('NewDeal.Year')" class="flex-1 p-2 border rounded" />
+                      <span class="w-32">{{ $t('DealsPage.Year') }}:</span>
+                      <input v-model="product.year" type="text" :placeholder="$t('DealsPage.Year')" class="flex-1 p-2 border rounded" />
                     </div>
                     <div class="flex items-center mb-2">
-                      <span class="w-32">{{ $t('NewDeal.SerialNumber') }}:</span>
-                      <input v-model="product.serialNumber" type="text" :placeholder="$t('NewDeal.SerialNumber')" class="flex-1 p-2 border rounded" />
+                      <span class="w-32">{{ $t('DealsPage.SerialNumber') }}:</span>
+                      <input v-model="product.serialNumber" type="text" :placeholder="$t('DealsPage.SerialNumber')" class="flex-1 p-2 border rounded" />
                     </div>
                     <div class="flex items-center mb-2">
-                      <span class="w-32">{{ $t('NewDeal.Price') }}:</span>
-                      <input v-model.number="product.price" type="numbers" :placeholder="$t('NewDeal.Price')" class="flex-1 p-2 border rounded" />
+                      <span class="w-32">{{ $t('DealsPage.Price') }}:</span>
+                      <input v-model.number="product.price" type="numbers" :placeholder="$t('DealsPage.Price')" class="flex-1 p-2 border rounded" />
                     </div>
                     <div class="flex items-center mb-2">
-                      <span class="w-32">{{ $t('NewDeal.Description') }}:</span>
+                      <span class="w-32">{{ $t('DealsPage.Description') }}:</span>
                       <textarea
                         v-model="product.description"
-                        :placeholder="$t('NewDeal.Description')"
+                        :placeholder="$t('DealsPage.Description')"
                         class="flex-1 p-2 border rounded h-20 resize-none"
                       ></textarea>
                     </div>
                   </div>
                 </div>
 
+                
                 <div class="flex-1">
-                  <h2 class="text-lg font-semibold mb-2">{{ $t('NewDeal.PaymentInformation') }}</h2>
+                  <h2 class="text-lg font-semibold mb-2">{{ $t('DealsPage.PaymentInformation') }}</h2>
                   <div class="mb-4">
                     <div class="flex items-center mb-2">
-                      <span class="w-40">{{ $t('NewDeal.Downpayment') }}:</span>
-                      <input v-model.number="payment.downpayment" type="numbers" :placeholder="$t('NewDeal.Downpayment')" class="flex-1 p-2 border rounded" />
+                      <span class="w-40">{{ $t('DealsPage.Downpayment') }}:</span>
+                      <input v-model.number="payment.downpayment" type="numbers" :placeholder="$t('DealsPage.Downpayment')" class="flex-1 p-2 border rounded" />
                     </div>
                     <div class="flex items-center mb-2">
-                      <span class="w-40">{{ $t('NewDeal.PeriodMonth') }}:</span>
-                      <input v-model.number="payment.periodMonth" type="numbers" :placeholder="$t('NewDeal.PeriodMonth')" class="flex-1 p-2 border rounded" />
+                      <span class="w-40">{{ $t('DealsPage.PeriodMonth') }}:</span>
+                      <input v-model.number="payment.periodMonth" type="numbers" :placeholder="$t('DealsPage.PeriodMonth')" class="flex-1 p-2 border rounded" />
                     </div>
                     <div class="flex items-center mb-2">
-                      <span class="w-40">{{ $t('NewDeal.ProfitMargin') }}:</span>
-                      <input v-model.number="payment.profit_margin" type="numbers" :placeholder="$t('NewDeal.ProfitMargin')" class="flex-1 p-2 border rounded" />
+                      <span class="w-40">{{ $t('DealsPage.ProfitMargin') }}:</span>
+                      <input v-model.number="payment.profit_margin" type="numbers" :placeholder="$t('DealsPage.ProfitMargin')" class="flex-1 p-2 border rounded" />
                     </div>
                   </div>
 
-                  <h2 class="text-lg font-semibold mb-2">{{ $t('NewDeal.InvestmentReturn') }}</h2>
+                  <h2 class="text-lg font-semibold mb-2">{{ $t('DealsPage.InvestmentReturn') }}</h2>
                   <div class="mb-4">
                     <div class="flex items-center mb-2">
-                      <span class="w-48">{{ $t('NewDeal.Investment') }}:</span>
+                      <span class="w-48">{{ $t('DealsPage.Investment') }}:</span>
                       <strong>{{ priceAfterDownPayment }}</strong>
                     </div>
                     <div class="flex items-center mb-2">
-                      <span class="w-48">{{ $t('NewDeal.TotalReturn') }}:</span>
+                      <span class="w-48">{{ $t('DealsPage.TotalReturn') }}:</span>
                       <strong>{{ priceAfterProfitMargin }}</strong>
                     </div>
                     <div class="flex items-center mb-2">
-                      <span class="w-48">{{ $t('NewDeal.PaymentPerMonth') }}:</span>
+                      <span class="w-48">{{ $t('DealsPage.PaymentPerMonth') }}:</span>
                       <div class="flex-1 flex items-center" style="min-width: 300px; max-width: 350px;">
                         <template v-if="isEditingPayment">
                           <input
@@ -80,17 +81,17 @@
                             type="numbers"
                             class="p-2 border rounded"
                             style="width: 120px;"
-                            :placeholder="$t('NewDeal.PaymentPerMonth')"
+                            :placeholder="$t('DealsPage.PaymentPerMonth')"
                           />
                           <div class="flex ml-2">
                             <button
                               @click="savePaymentPerMonth"
                               class="px-2 py-1 bg-green-500 text-white rounded"
-                            >{{ $t('NewDeal.Save') }}</button>
+                            >{{ $t('DealsPage.Save') }}</button>
                             <button
                               @click="cancelEditPayment"
                               class="ml-2 px-2 py-1 bg-gray-300 text-black rounded"
-                            >{{ $t('NewDeal.Cancel') }}</button>
+                            >{{ $t('DealsPage.Cancel') }}</button>
                           </div>
                         </template>
                         <template v-else>
@@ -99,12 +100,12 @@
                             @click="editPaymentPerMonth"
                             class="ml-auto px-2 py-1 bg-blue-500 text-white rounded"
                             style="margin-left: auto;"
-                          >{{ $t('NewDeal.Edit') }}</button>
+                          >{{ $t('DealsPage.Edit') }}</button>
                         </template>
                       </div>
                     </div>
                     <div class="flex items-center mb-2">
-                      <span class="w-48">{{ $t('NewDeal.Profit') }}:</span>
+                      <span class="w-48">{{ $t('DealsPage.Profit') }}:</span>
                       <strong>{{ profit }}</strong>
                     </div>
                   </div>
@@ -115,7 +116,7 @@
                   @click="createDeal"
                   class="px-6 py-3 bg-green-600 text-white rounded font-semibold shadow hover:bg-green-700 transition"
                 >
-                  {{ $t('NewDeal.CreateNewDeal') }}
+                  {{ $t('DealsPage.CreateNewDeal') }}
                 </button>
               </div>
             </div>
@@ -231,12 +232,12 @@ export default {
           }
         });
         if (response.status === 201 || response.status === 200) {
-          alert(this.$t('NewDeal.DealCreated'));
+          alert(this.$t('DealsPage.DealCreated'));
         } else {
-          alert(this.$t('NewDeal.DealCreateFailed'));
+          alert(this.$t('DealsPage.DealCreateFailed'));
         }
       } catch (error) {
-        alert(this.$t('NewDeal.DealCreateFailed'));
+        alert(this.$t('DealsPage.DealCreateFailed'));
       }
     }
   }

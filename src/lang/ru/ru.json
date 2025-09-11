@@ -25,9 +25,7 @@
         "Deals" : "Сделки",
         "CurrentDeals": "Текущие сделки",
         "PastDeals": "Прошлые сделки",
-        "NewDeal": "Новая сделка"
-    },
-    "NewDeal": {
+        "NewDeal": "Новая сделка",
         "Product": "Продукт",
         "Brand": "Бренд",
         "Model": "Модель",
@@ -52,7 +50,20 @@
     },
     "CalculatorPage" : {
         "Calculator" : "Калькулятор",
-        "Calculate" : "Рассчитать",
-        "Investment" : "Инвестиции"
+        "Investment": "Инвестиции",
+        "TotalPayment": "Общая сумма платежа",
+        "MonthlyPayment": "Ежемесячный платеж",
+        "ProductPrice": "Цена продукта",
+        "ProductPricePlaceholder": "Введите цену продукта",
+        "Downpayment": "Первоначальный взнос",
+        "DownpaymentPlaceholder": "Введите первоначальный взнос",
+        "Period": "Период (месяцы)",
+        "PeriodPlaceholder": "Введите период в месяцах",
+        "ProfitMargin": "Маржа прибыли (%)",
+        "ProfitMarginPlaceholder": "Введите маржу прибыли",
+        "Calculate": "Рассчитать"
+    },
+    "Common": {
+        "Loading": "Загрузка..."
     }
 }   
