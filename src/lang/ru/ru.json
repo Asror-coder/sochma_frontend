@@ -34,7 +34,7 @@
         "Price": "Цена",
         "Description": "Описание",
         "PaymentInformation": "Платежная информация",
-        "Downpayment": "Первоначальный взнос",
+        "Downpayment": "Первый взнос",
         "PeriodMonth": "Период (Месяцы)",
         "ProfitMargin": "Маржа прибыли (%)",
         "InvestmentReturn": "Возврат инвестиций",
@@ -46,7 +46,8 @@
         "Save": "Сохранить",
         "Cancel": "Отмена",
         "CreateNewDeal": "Создать новую сделку",
-        "DealCreated": "Новая сделка создана!"
+        "DealCreated": "Новая сделка создана!",
+        "NoDealsFound": "Сделки не найдены."
     },
     "CalculatorPage" : {
         "Calculator" : "Калькулятор",

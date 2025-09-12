@@ -1,122 +1,117 @@
 <template>
-  <main class="grid grid-cols-5 mt-20 bg-gray-100 min-h-screen">
-    <LeftMenuView />
-    <div class="col-start-2 col-span-4 flex-grow flex justify-center items-start pt-10">
-      <!-- Increased max-w-5xl for wider card -->
-      <div class="w-full max-w-5xl bg-white rounded-2xl shadow-lg p-12">
-        <h1 class="text-3xl font-bold text-center mb-8 text-blue-700">
-          {{ $t('DealsPage.NewDeal') }}
-        </h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
-          <!-- Product Section -->
-          <div>
-            <h2 class="text-lg font-semibold mb-4 text-blue-600">{{ $t('DealsPage.Product') }}</h2>
-            <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Brand') }}</label>
-                <input v-model="product.brand" type="text" :placeholder="$t('DealsPage.Brand')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Model') }}</label>
-                <input v-model="product.model" type="text" :placeholder="$t('DealsPage.Model')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Year') }}</label>
-                <input v-model="product.year" type="text" :placeholder="$t('DealsPage.Year')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.SerialNumber') }}</label>
-                <input v-model="product.serialNumber" type="text" :placeholder="$t('DealsPage.SerialNumber')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Price') }}</label>
-                <input v-model.number="product.price" type="numbers" :placeholder="$t('DealsPage.Price')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Description') }}</label>
-                <textarea v-model="product.description" :placeholder="$t('DealsPage.Description')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg h-20 resize-none focus:ring-2 focus:ring-blue-300"></textarea>
-              </div>
+  <main class="flex justify-center mt-28">
+    <!-- Increased max-w-5xl for wider card -->
+    <div class="w-full max-w-5xl rounded-2xl shadow-lg p-12">
+      <h1 class="text-3xl font-bold text-center mb-8 text-blue-700">
+        {{ $t('DealsPage.NewDeal') }}
+      </h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
+        <!-- Product Section -->
+        <div>
+          <h2 class="text-lg font-semibold mb-4 text-blue-600">{{ $t('DealsPage.Product') }}</h2>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Brand') }}</label>
+              <input v-model="product.brand" type="text" :placeholder="$t('DealsPage.Brand')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Model') }}</label>
+              <input v-model="product.model" type="text" :placeholder="$t('DealsPage.Model')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Year') }}</label>
+              <input v-model="product.year" type="text" :placeholder="$t('DealsPage.Year')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.SerialNumber') }}</label>
+              <input v-model="product.serialNumber" type="text" :placeholder="$t('DealsPage.SerialNumber')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Price') }}</label>
+              <input v-model.number="product.price" type="numbers" :placeholder="$t('DealsPage.Price')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Description') }}</label>
+              <textarea v-model="product.description" :placeholder="$t('DealsPage.Description')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg h-20 resize-none focus:ring-2 focus:ring-blue-300"></textarea>
             </div>
           </div>
-          <!-- Payment Section -->
-          <div>
-            <h2 class="text-lg font-semibold mb-4 text-blue-600">{{ $t('DealsPage.PaymentInformation') }}</h2>
-            <div class="space-y-4 mb-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Downpayment') }}</label>
-                <input v-model.number="payment.downpayment" type="numbers" :placeholder="$t('DealsPage.Downpayment')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.PeriodMonth') }}</label>
-                <input v-model.number="payment.periodMonth" type="numbers" :placeholder="$t('DealsPage.PeriodMonth')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.ProfitMargin') }}</label>
-                <input v-model.number="payment.profit_margin" type="numbers" :placeholder="$t('DealsPage.ProfitMargin')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
-              </div>
+        </div>
+        <!-- Payment Section -->
+        <div>
+          <h2 class="text-lg font-semibold mb-4 text-blue-600">{{ $t('DealsPage.PaymentInformation') }}</h2>
+          <div class="space-y-4 mb-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Downpayment') }}</label>
+              <input v-model.number="payment.downpayment" type="numbers" :placeholder="$t('DealsPage.Downpayment')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
             </div>
-            <!-- Results Area: add mt-16 for extra top margin -->
-            <div class="bg-blue-50 border border-blue-200 rounded-lg px-6 py-4 mt-10">
-              <h2 class="text-lg font-semibold mb-4 text-blue-600">{{ $t('DealsPage.InvestmentReturn') }}</h2>
-              <div class="space-y-3">
-                <div class="flex justify-between items-center">
-                  <span class="text-gray-600">{{ $t('DealsPage.Investment') }}</span>
-                  <span class="text-xl font-semibold text-blue-700">{{ priceAfterDownPayment }}</span>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.PeriodMonth') }}</label>
+              <input v-model.number="payment.periodMonth" type="numbers" :placeholder="$t('DealsPage.PeriodMonth')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.ProfitMargin') }}</label>
+              <input v-model.number="payment.profit_margin" type="numbers" :placeholder="$t('DealsPage.ProfitMargin')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
+            </div>
+          </div>
+          <!-- Results Area: add mt-16 for extra top margin -->
+          <div class="bg-blue-50 border border-blue-200 rounded-lg px-6 py-4 mt-10">
+            <h2 class="text-lg font-semibold mb-4 text-blue-600">{{ $t('DealsPage.InvestmentReturn') }}</h2>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">{{ $t('DealsPage.Investment') }}</span>
+                <span class="text-xl font-semibold text-blue-700">{{ priceAfterDownPayment }}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">{{ $t('DealsPage.TotalReturn') }}</span>
+                <span class="text-xl font-semibold text-blue-700">{{ priceAfterProfitMargin }}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600 flex items-center">
+                  {{ $t('DealsPage.PaymentPerMonth') }}
+                  <template v-if="!isEditingPayment">
+                    <!-- Edit button right next to the label -->
+                    <button @click="editPaymentPerMonth" class="ml-2 px-2 py-1 bg-blue-500 text-white rounded">
+                      {{ $t('DealsPage.Edit') }}
+                    </button>
+                  </template>
+                </span>
+                <div class="flex items-center gap-2 justify-end w-1/2">
+                  <template v-if="isEditingPayment">
+                    <input v-model.number="editablePaymentPerMonth" type="numbers" class="p-1 border rounded w-24" :placeholder="$t('DealsPage.PaymentPerMonth')" />
+                    <button @click="savePaymentPerMonth" class="px-2 py-1 bg-green-500 text-white rounded">{{ $t('DealsPage.Save') }}</button>
+                    <button @click="cancelEditPayment" class="px-2 py-1 bg-gray-300 text-black rounded">{{ $t('DealsPage.Cancel') }}</button>
+                  </template>
+                  <template v-else>
+                    <span class="text-xl font-semibold text-blue-700 w-24 text-right">{{ paymentPerMonth }}</span>
+                  </template>
                 </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-gray-600">{{ $t('DealsPage.TotalReturn') }}</span>
-                  <span class="text-xl font-semibold text-blue-700">{{ priceAfterProfitMargin }}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-gray-600 flex items-center">
-                    {{ $t('DealsPage.PaymentPerMonth') }}
-                    <template v-if="!isEditingPayment">
-                      <!-- Edit button right next to the label -->
-                      <button @click="editPaymentPerMonth" class="ml-2 px-2 py-1 bg-blue-500 text-white rounded">
-                        {{ $t('DealsPage.Edit') }}
-                      </button>
-                    </template>
-                  </span>
-                  <div class="flex items-center gap-2 justify-end w-1/2">
-                    <template v-if="isEditingPayment">
-                      <input v-model.number="editablePaymentPerMonth" type="numbers" class="p-1 border rounded w-24" :placeholder="$t('DealsPage.PaymentPerMonth')" />
-                      <button @click="savePaymentPerMonth" class="px-2 py-1 bg-green-500 text-white rounded">{{ $t('DealsPage.Save') }}</button>
-                      <button @click="cancelEditPayment" class="px-2 py-1 bg-gray-300 text-black rounded">{{ $t('DealsPage.Cancel') }}</button>
-                    </template>
-                    <template v-else>
-                      <span class="text-xl font-semibold text-blue-700 w-24 text-right">{{ paymentPerMonth }}</span>
-                    </template>
-                  </div>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-gray-600">{{ $t('DealsPage.Profit') }}</span>
-                  <span class="text-xl font-semibold text-blue-700">{{ profit }}</span>
-                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">{{ $t('DealsPage.Profit') }}</span>
+                <span class="text-xl font-semibold text-blue-700">{{ profit }}</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex justify-center mt-8">
-          <button
-            @click="createDeal"
-            class="px-8 py-4 bg-green-600 text-white rounded-lg font-semibold shadow hover:bg-green-700 text-lg transition"
-          >
-            {{ $t('DealsPage.CreateNewDeal') }}
-          </button>
-        </div>
+      </div>
+      <div class="flex justify-center mt-8">
+        <button
+          @click="createDeal"
+          class="px-8 py-4 bg-green-600 text-white rounded-lg font-semibold shadow hover:bg-green-700 text-lg transition"
+        >
+          {{ $t('DealsPage.CreateNewDeal') }}
+        </button>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import LeftMenuView from '../Menu/LeftMenuView.vue';
 import axios from 'axios';
 
 export default {
   name: 'NewDealView',
   components: {
-    LeftMenuView
   },
   data() {
     return {

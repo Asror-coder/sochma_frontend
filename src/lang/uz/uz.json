@@ -46,7 +46,8 @@
         "Save": "Saqlash",
         "Cancel": "Bekor qilish",
         "CreateNewDeal": "Yangi bitim yaratish",
-        "DealCreated": "Yangi bitim yaratildi!"
+        "DealCreated": "Yangi bitim yaratildi!",
+        "NoDealsFound": "Bitimlar topilmadi."
     },
     "CalculatorPage" : {
         "Calculator" : "Kalkulyator",

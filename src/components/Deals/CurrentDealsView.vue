@@ -1,38 +1,62 @@
 <template>
-  <main class="grid grid-cols-5 mt-20">
-    <LeftMenuView />
-    
-    <div class="col-start-2 col-span-4 flex-grow bg-gray-100 h-screen">
-      <div class="flex justify-center">
-        <div class="bg-white p-6 rounded-lg mt-5 w-full max-w-3xl">
-          <h1 class="text-3xl ml-5 pb-5 text-gray-500">{{ $t('DealsPage.CurrentDeals') }}</h1>
-          <div v-if="loading" class="text-center text-gray-400 py-10">
-            {{ $t('Common.Loading') }}
-          </div>
-          <div v-else>
-            <div v-if="deals.length === 0" class="text-center text-gray-400 py-10">
-              {{ $t('DealsPage.NoDealsFound') }}
-            </div>
-            <div class="grid gap-4">
-              <div
-                v-for="(deal, idx) in deals"
-                :key="idx"
-                class="cursor-pointer transition-shadow hover:shadow-lg bg-blue-50 border border-blue-200 rounded-lg p-5"
-                @click="goToDealDetail(deal)"
-              >
-                <div class="flex flex-col md:flex-row md:justify-between">
-                  <div>
-                    <span class="font-semibold text-lg">{{ deal.brand }} {{ deal.model }}</span>
-                    <span class="ml-2 text-gray-500">({{ deal.year }})</span>
-                    <div class="text-sm text-gray-600 mt-1">{{ deal.description }}</div>
-                    <div class="text-xs text-gray-400">Serial: {{ deal.serialNumber }}</div>
+  <main class="flex justify-center mt-28">
+    <div class="flex flex-col">
+      <h1 class="text-3xl pb-5 text-gray-500">{{ $t('DealsPage.CurrentDeals') }}</h1>
+
+      <div v-if="loading" class="text-gray-400 animate-pulse">
+        {{ $t('Common.Loading') }}
+      </div>
+      
+      <div v-else>
+        
+        <div v-if="deals.length === 0" class="text-gray-400 italic">
+          {{ $t('DealsPage.NoDealsFound') }}
+        </div>
+
+        <div class="grid gap-6">
+          <div
+            v-for="(deal, idx) in deals"
+            :key="idx"
+            class="cursor-pointer bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl p-4 transition-all"
+            @click="goToDealDetail(deal)"
+          >
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between md:gap-x-60">
+              <div class="flex-1 ml-4">
+                <div class="mb-1">
+                  <span class="font-bold text-2xl text-gray-800">{{ deal.brand }} {{ deal.model }}</span>
+                </div>
+                <div class="mb-2">
+                  <span class="text-base text-gray-500">{{ deal.year }}</span>
+                </div>
+                <div class="text-base text-gray-600 mb-1">{{ deal.description }}</div>
+                <div class="text-xs text-gray-400">Serial: {{ deal.serialNumber }}</div>
+              </div>
+              <div class="flex-1 mt-6 md:mt-0">
+                <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
+                  <div class="grid grid-cols-3 items-center gap-0">
+                    <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.Price') }}</span>
+                    <span></span>
+                    <span class="font-bold text-xl text-blue-700 text-right">${{ deal.price }}</span>
                   </div>
-                  <div class="mt-2 md:mt-0 text-right">
-                    <div class="text-sm">Price: <span class="font-bold">${{ deal.price }}</span></div>
-                    <div class="text-sm">Downpayment: ${{ deal.downpayment }}</div>
-                    <div class="text-sm">Period: {{ deal.periodMonth }} months</div>
-                    <div class="text-sm">Total Profit: ${{ deal.totalProfit }}</div>
-                    <div class="text-sm">Broker Profit: ${{ deal.brokerProfit }}</div>
+                  <div class="grid grid-cols-3 items-center gap-0">
+                    <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.Downpayment') }}</span>
+                    <span></span>
+                    <span class="font-semibold text-gray-700 text-right">${{ deal.downpayment }}</span>
+                  </div>
+                  <div class="grid grid-cols-3 items-center gap-0">
+                    <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PeriodMonth') }}</span>
+                    <span></span>
+                    <span class="font-semibold text-gray-700 text-right">{{ deal.periodMonth }}</span>
+                  </div>
+                  <div class="grid grid-cols-3 items-center gap-0">
+                    <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.TotalReturn') }}</span>
+                    <span></span>
+                    <span class="font-semibold text-green-700 text-right">${{ deal.totalProfit }}</span>
+                  </div>
+                  <div class="grid grid-cols-3 items-center gap-0">
+                    <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.Profit') }}</span>
+                    <span></span>
+                    <span class="font-semibold text-green-700 text-right">${{ deal.brokerProfit }}</span>
                   </div>
                 </div>
               </div>
@@ -46,12 +70,10 @@
 
 <script>
 import axios from 'axios';
-import LeftMenuView from '../Menu/LeftMenuView.vue';
 
 export default {
   name: 'CurrentDealsView',
   components: {
-    LeftMenuView
   },
   data() {
     return {
@@ -61,11 +83,8 @@ export default {
   },
   async mounted() {
     try {
-      // Get user from localStorage and extract brokerId
-      const user = JSON.parse(localStorage.getItem('user'));
-
       const token = localStorage.getItem('token');
-      const response = await axios.get(`/api/Deal/broker/${user.id}`, {
+      const response = await axios.get(`/api/Deal/broker/`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
