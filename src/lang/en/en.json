@@ -47,7 +47,8 @@
         "Cancel": "Cancel",
         "CreateNewDeal": "Create New Deal",
         "DealCreated": "New deal created!",
-        "NoDealsFound": "No deals found."
+        "NoDealsFound": "No deals found.",
+        "DealDetails": "Deal details"
     },
     "CalculatorPage" : {
         "Calculator": "Calculator",

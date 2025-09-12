@@ -100,7 +100,7 @@ export default {
     goToDealDetail(deal) {
       // Assuming you have a route named 'dealDetail' and pass deal id or serialNumber
       console.log(deal);
-      this.$router.push({ name: 'dealDetail', params: { id: deal.id } });
+      this.$router.push({ name: 'dealDetail', params: { id: deal.dealId } });
     }
   }
 }

@@ -47,7 +47,8 @@
         "Cancel": "Отмена",
         "CreateNewDeal": "Создать новую сделку",
         "DealCreated": "Новая сделка создана!",
-        "NoDealsFound": "Сделки не найдены."
+        "NoDealsFound": "Сделки не найдены.",
+        "DealDetails": "Детали сделки"
     },
     "CalculatorPage" : {
         "Calculator" : "Калькулятор",

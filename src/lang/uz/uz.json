@@ -47,7 +47,8 @@
         "Cancel": "Bekor qilish",
         "CreateNewDeal": "Yangi bitim yaratish",
         "DealCreated": "Yangi bitim yaratildi!",
-        "NoDealsFound": "Bitimlar topilmadi."
+        "NoDealsFound": "Bitimlar topilmadi.",
+        "DealDetails": "Bitim tafsilotlari"
     },
     "CalculatorPage" : {
         "Calculator" : "Kalkulyator",

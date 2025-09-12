@@ -9,15 +9,15 @@
         <div class="flex flex-col md:flex-row md:justify-between gap-4">
           <div v-if="result.investment" class="flex-1 text-center">
             <div class="text-xs text-gray-500">{{ $t('CalculatorPage.Investment') }}</div>
-            <div class="text-2xl font-semibold text-blue-700">{{ result.investment }}</div>
+            <div class="text-2xl font-semibold text-blue-700">${{ result.investment }}</div>
           </div>
           <div v-if="result.totalPayment" class="flex-1 text-center">
             <div class="text-xs text-gray-500">{{ $t('CalculatorPage.TotalPayment') }}</div>
-            <div class="text-2xl font-semibold text-blue-700">{{ result.totalPayment }}</div>
+            <div class="text-2xl font-semibold text-blue-700">${{ result.totalPayment }}</div>
           </div>
           <div v-if="result.monthlyPayment" class="flex-1 text-center">
             <div class="text-xs text-gray-500">{{ $t('CalculatorPage.MonthlyPayment') }}</div>
-            <div class="text-2xl font-semibold text-blue-700">{{ result.monthlyPayment }}</div>
+            <div class="text-2xl font-semibold text-blue-700">${{ result.monthlyPayment }}</div>
           </div>
         </div>
       </div>
