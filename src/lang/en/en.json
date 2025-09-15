@@ -66,6 +66,23 @@
         "Calculate": "Calculate"
     },
     "Common": {
-        "Loading": "Loading..."
+        "Loading": "Loading...",
+        "NoDealsFound": "No deals found.",
+        "Error": "An error occurred. Please try again.",
+        "DealNotFound": "Deal not found.",
+        "ConfirmDelete": "Are you sure you want to delete this payment?",
+        "Delete": "Delete",
+        "Date": "Date",
+        "Amount": "Amount",
+        "Status": "Status",
+        "Actions": "Actions"
+    },
+    "PaymentsView": {
+        "PaymentHistory": "Payment History",
+        "Amount": "Amount",
+        "Date": "Date",
+        "Status": "Status",
+        "NoPayments": "No payments found.",
+        "Create": "Create"
     }
 }

@@ -10,7 +10,7 @@
       <div v-else>
         
         <div v-if="deals.length === 0" class="text-gray-400 italic">
-          {{ $t('DealsPage.NoDealsFound') }}
+          {{ $t('Common.NoDealsFound') }}
         </div>
 
         <div class="grid gap-6">
@@ -63,44 +63,50 @@
             </div>
           </div>
         </div>
+        <!-- Pagination Controls -->
+        <div v-if="pagination.totalPages > 1" class="flex justify-center mt-8 gap-2">
+          <button
+            class="px-4 py-2 rounded bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300"
+            :disabled="pagination.pageNumber === 1"
+            @click="changePage(pagination.pageNumber - 1)"
+          >
+            {{ $t('Common.Previous') }}
+          </button>
+          <span class="px-4 py-2 text-gray-600 font-medium">
+            {{ $t('Common.Page') }} {{ pagination.pageNumber }} / {{ pagination.totalPages }}
+          </span>
+          <button
+            class="px-4 py-2 rounded bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300"
+            :disabled="pagination.pageNumber === pagination.totalPages"
+            @click="changePage(pagination.pageNumber + 1)"
+          >
+            {{ $t('Common.Next') }}
+          </button>
+        </div>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import axios from 'axios';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'CurrentDealsView',
-  components: {
-  },
-  data() {
-    return {
-      deals: [],
-      loading: true
-    }
+  computed: {
+    ...mapState('deal', ['deals', 'loading']),
+    ...mapGetters('deal', ['pagination'])
   },
   async mounted() {
-    try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get(`/api/Deal/broker/`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      this.deals = response.data;
-    } catch (error) {
-      this.deals = [];
-    } finally {
-      this.loading = false;
-    }
+    await this.$store.dispatch('deal/fetchDeals', { pageNumber: 1, pageSize: this.pagination.pageSize });
   },
   methods: {
     goToDealDetail(deal) {
-      // Assuming you have a route named 'dealDetail' and pass deal id or serialNumber
-      console.log(deal);
       this.$router.push({ name: 'dealDetail', params: { id: deal.dealId } });
+    },
+    async changePage(page) {
+      if (page < 1 || page > this.pagination.totalPages) return;
+      await this.$store.dispatch('deal/fetchDeals', { pageNumber: page, pageSize: this.pagination.pageSize });
     }
   }
 }

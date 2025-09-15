@@ -1,7 +1,7 @@
 <template>
-  <main class="flex justify-center mt-28">
+  <main class="flex justify-center mt-20">
     <!-- Increased max-w-5xl for wider card -->
-    <div class="w-full max-w-5xl rounded-2xl shadow-lg p-12">
+    <div class="w-full max-w-5xl rounded-2xl shadow-lg p-8">
       <h1 class="text-3xl font-bold text-center mb-8 text-blue-700">
         {{ $t('DealsPage.NewDeal') }}
       </h1>

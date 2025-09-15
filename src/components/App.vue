@@ -85,6 +85,7 @@ const userName = computed(() => {
 
 function logout() {
   localStorage.removeItem('token');
+  localStorage.removeItem('user');
   isLoggedIn.value = false;
   router.push({ name: 'login' });
 }

@@ -66,6 +66,22 @@
         "Calculate": "Hisoblash"
     },
     "Common": {
-        "Loading": "Yuklanmoqda..."
+        "Loading": "Yuklanmoqda...",
+        "NoDealsFound": "Bitimlar topilmadi.",
+        "Error": "Xato yuz berdi. Iltimos, qaytadan urinib ko'ring.",
+        "DealNotFound": "Bitim topilmadi.",
+        "ConfirmDelete": "Siz ushbu to'lovni o'chirishni xohlaysizmi?",
+        "Delete": "O'chirish",
+        "Date": "Sana",
+        "Amount": "Miqdor",
+        "Actions": "Harakatlar"
+    },
+    "PaymentsView": {
+        "PaymentHistory": "To'lov tarixi",
+        "Amount": "Miqdor",
+        "Date": "Sana",
+        "Status": "Holat",
+        "NoPayments": "To'lovlar topilmadi.",
+         "Create": "Yaratish"
     }
 }
