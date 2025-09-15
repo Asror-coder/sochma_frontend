@@ -48,7 +48,8 @@
         "CreateNewDeal": "Yangi bitim yaratish",
         "DealCreated": "Yangi bitim yaratildi!",
         "NoDealsFound": "Bitimlar topilmadi.",
-        "DealDetails": "Bitim tafsilotlari"
+        "DealDetails": "Bitim tafsilotlari",
+        "DealCreateFailed": "Bitim yaratib bo'lmadi. Iltimos, qaytadan urinib ko'ring."
     },
     "CalculatorPage" : {
         "Calculator" : "Kalkulyator",

@@ -1,6 +1,9 @@
 <template>
   <main class="flex justify-center mt-28">
     <div class="flex flex-col">
+      <div v-if="successMessage" class="mb-4 p-3 rounded bg-green-100 text-green-700 text-center font-semibold">
+        {{ successMessage }}
+      </div>
       <h1 class="text-3xl pb-5 text-gray-500">{{ $t('DealsPage.CurrentDeals') }}</h1>
 
       <div v-if="loading" class="text-gray-400 animate-pulse">
@@ -93,6 +96,11 @@ import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'CurrentDealsView',
+  data() {
+    return {
+      successMessage: this.$route.query.message || ''
+    }
+  },
   computed: {
     ...mapState('deal', ['deals', 'loading']),
     ...mapGetters('deal', ['pagination'])

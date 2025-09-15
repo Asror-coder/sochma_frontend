@@ -48,7 +48,8 @@
         "CreateNewDeal": "Create New Deal",
         "DealCreated": "New deal created!",
         "NoDealsFound": "No deals found.",
-        "DealDetails": "Deal details"
+        "DealDetails": "Deal details",
+        "DealCreateFailed": "Failed to create deal. Please try again."
     },
     "CalculatorPage" : {
         "Calculator": "Calculator",

@@ -48,7 +48,8 @@
         "CreateNewDeal": "Создать новую сделку",
         "DealCreated": "Новая сделка создана!",
         "NoDealsFound": "Сделки не найдены.",
-        "DealDetails": "Детали сделки"
+        "DealDetails": "Детали сделки",
+        "DealCreateFailed": "Не удалось создать сделку. Пожалуйста, попробуйте снова."
     },
     "CalculatorPage" : {
         "Calculator" : "Калькулятор",

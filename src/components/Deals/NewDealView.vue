@@ -2,6 +2,9 @@
   <main class="flex justify-center mt-20">
     <!-- Increased max-w-5xl for wider card -->
     <div class="w-full max-w-5xl rounded-2xl shadow-lg p-8">
+      <div v-if="errorMessage" class="mb-4 p-3 rounded bg-red-100 text-red-700 text-center font-semibold">
+        {{ errorMessage }}
+      </div>
       <h1 class="text-3xl font-bold text-center mb-8 text-blue-700">
         {{ $t('DealsPage.NewDeal') }}
       </h1>
@@ -132,7 +135,8 @@ export default {
       editablePaymentPerMonth: 0,
       manualPaymentPerMonth: null,
       manualPriceAfterProfitMargin: null,
-      manualProfit: null
+      manualProfit: null,
+      errorMessage: ''
     }
   },
   computed: {
@@ -202,6 +206,7 @@ export default {
         brokerProfit: 0
       };
 
+      this.errorMessage = '';
       try {
         const response = await axios.post('/api/Deal', requestBody, {
           headers: {
@@ -210,12 +215,15 @@ export default {
           }
         });
         if (response.status === 201 || response.status === 200) {
-          alert(this.$t('DealsPage.DealCreated'));
+          this.$router.push({
+            name: 'currentDeals',
+            query: { message: this.$t('DealsPage.DealCreated') }
+          });
         } else {
-          alert(this.$t('DealsPage.DealCreateFailed'));
+          this.errorMessage = this.$t('DealsPage.DealCreateFailed');
         }
       } catch (error) {
-        alert(this.$t('DealsPage.DealCreateFailed'));
+        this.errorMessage = this.$t('DealsPage.DealCreateFailed');
       }
     }
   }
