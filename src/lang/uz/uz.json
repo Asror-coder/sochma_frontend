@@ -19,7 +19,18 @@
     },
     "HomePage" : {
         "Home" : "Bosh sahifa",
-        "welcomeMessage" : "Sochma platformasiga xush kelibsiz! Bizning xizmatlarimizni o'rganing va investitsiyalaringizni osonlik bilan boshqaring."
+        "welcomeMessage" : "Sochma platformasiga xush kelibsiz! Bizning xizmatlarimizni o'rganing va investitsiyalaringizni osonlik bilan boshqaring.",
+    "heroTitle": "Xush kelibsiz, {name}",
+    "createDealBtn": "Yangi bitim yaratish",
+    "openCalculatorBtn": "Kalkulyatorni ochish",
+    "features": {
+            "investorsTitle": "Investorlar va xaridorlarni qidirish",
+            "investorsDesc": "Bitimlaringiz uchun investorlar va xaridorlarni oson toping.",
+            "dealTitle": "Bitimlarni boshqarish",
+            "dealDesc": "Barcha bitimlaringizni bir joyda kuzatib boring, yarating va boshqaring.",
+            "dashboardTitle": "Shaxsiy kabinet",
+            "dashboardDesc": "Faoliyatingizga moslashtirilgan tahlil va statistikani oling."
+        }
     },
     "DealsPage" : {
         "Deals" : "Bitimlaral",
