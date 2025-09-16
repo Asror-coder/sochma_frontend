@@ -1,5 +1,5 @@
 <template>
-  <main class="flex justify-center mt-28">
+  <main class="flex justify-center my-28">
     <div class="w-full max-w-xl rounded-2xl shadow-lg p-8">
       <h1 class="text-3xl font-bold text-center mb-6 text-blue-700">
         {{ $t('CalculatorPage.Calculator') }}

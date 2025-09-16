@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-20">
+    <div class="mt-16">
         <main class="flex-grow">
             <div class="flex justify-center">
                 <div class="w-4/12 bg-white p-6 rounded-lg">

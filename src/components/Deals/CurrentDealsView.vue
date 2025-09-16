@@ -1,5 +1,5 @@
 <template>
-  <main class="flex justify-center mt-28">
+  <main class="flex justify-center my-28">
     <div class="flex flex-col">
       <div v-if="successMessage" class="mb-4 p-3 rounded bg-green-100 text-green-700 text-center font-semibold">
         {{ successMessage }}

@@ -1,5 +1,5 @@
 <template>
-    <main class="flex justify-center mt-28">
+    <main class="flex justify-center my-28">
         <div class="flex flex-col">
             <div class="w-full max-w-3xl rounded-2xl shadow-lg p-10 bg-white">
                 <h1 class="text-3xl font-bold text-center mb-8 text-blue-700">

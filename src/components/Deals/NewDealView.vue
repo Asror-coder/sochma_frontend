@@ -1,5 +1,5 @@
 <template>
-  <main class="flex justify-center mt-20">
+  <main class="flex justify-center my-20">
     <!-- Increased max-w-5xl for wider card -->
     <div class="w-full max-w-5xl rounded-2xl shadow-lg p-8">
       <div v-if="errorMessage" class="mb-4 p-3 rounded bg-red-100 text-red-700 text-center font-semibold">
