@@ -65,7 +65,7 @@ export default {
       commit('SET_LOADING', true);
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('/api/Deal/broker/', {
+        const response = await axios.get('/api/Deal/broker', {
           headers: {
             'Authorization': `Bearer ${token}`
           },

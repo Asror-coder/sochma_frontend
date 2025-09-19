@@ -8,7 +8,8 @@
       <h1 class="text-3xl font-bold text-center mb-8 text-blue-700">
         {{ $t('DealsPage.NewDeal') }}
       </h1>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <!-- Product Section -->
         <div>
           <h2 class="text-lg font-semibold mb-4 text-blue-600">{{ $t('DealsPage.Product') }}</h2>
@@ -39,6 +40,7 @@
             </div>
           </div>
         </div>
+
         <!-- Payment Section -->
         <div>
           <h2 class="text-lg font-semibold mb-4 text-blue-600">{{ $t('DealsPage.PaymentInformation') }}</h2>
@@ -55,9 +57,22 @@
               <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.ProfitMargin') }}</label>
               <input v-model.number="payment.profit_margin" type="numbers" :placeholder="$t('DealsPage.ProfitMargin')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
             </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.PaymentDayOfMonth') }}</label>
+              <input
+                v-model.number="payment.paymentDayOfMonth"
+                type="numbers"
+                min="1"
+                max="31"
+                :placeholder="$t('DealsPage.PaymentDayOfMonthPlaceholder')"
+                class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300"
+              />
+              <p class="text-xs text-gray-500 mt-1">{{ $t('DealsPage.PaymentDayOfMonthHelper') }}</p>
+            </div>
           </div>
+
           <!-- Results Area: add mt-16 for extra top margin -->
-          <div class="bg-blue-50 border border-blue-200 rounded-lg px-6 py-4 mt-10">
+          <div class="bg-blue-50 border border-blue-200 rounded-lg px-6 py-4">
             <h2 class="text-lg font-semibold mb-4 text-blue-600">{{ $t('DealsPage.InvestmentReturn') }}</h2>
             <div class="space-y-3">
               <div class="flex justify-between items-center">
@@ -97,6 +112,39 @@
           </div>
         </div>
       </div>
+
+      <!-- Participant section -->
+      <div class="mb-8">
+        <h2 class="text-lg font-semibold mb-2 text-blue-600">{{ $t('DealsPage.Participants') }}</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
+          <!-- Investor phone field -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.InvestorPhone') }}</label>
+            <div class="flex gap-2 items-center">
+              <span class="px-3 py-3 bg-gray-100 border border-gray-300 rounded-lg text-gray-700 select-none">+{{ defaultPhoneCode }}</span>
+              <input v-model.number="investorPhone" type="numbers" inputmode="numeric" :placeholder="$t('DealsPage.InvestorPhonePlaceholder')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
+              <button @click="addInvestorByPhone" type="button" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">{{ $t('Common.Add') }}</button>
+            </div>
+            <p v-if="investorLookupError" class="text-xs text-red-600 mt-1">{{ investorLookupError }}</p>
+            <p v-if="investorUser" class="text-sm text-green-600 mt-1">{{ formatUser(investorUser) }}</p>
+          </div>
+
+          <!-- Buyer phone field -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.BuyerPhone') }}</label>
+            <div class="flex gap-2 items-center">
+              <span class="px-3 py-3 bg-gray-100 border border-gray-300 rounded-lg text-gray-700 select-none">+{{ defaultPhoneCode }}</span>
+              <input v-model.number="buyerPhone" type="numbers" inputmode="numeric" :placeholder="$t('DealsPage.BuyerPhonePlaceholder')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
+              <button @click="addBuyerByPhone" type="button" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">{{ $t('Common.Add') }}</button>
+            </div>
+            <p v-if="buyerLookupError" class="text-xs text-red-600 mt-1">{{ buyerLookupError }}</p>
+            <p v-if="buyerUser" class="text-sm text-green-600 mt-1">{{ formatUser(buyerUser) }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Create Deal Button -->
       <div class="flex justify-center mt-8">
         <button
           @click="createDeal"
@@ -129,8 +177,16 @@ export default {
       payment: {
         downpayment: 0,
         periodMonth: 0,
-        profit_margin: 0
+        profit_margin: 0,
+        paymentDayOfMonth: null
       },
+      investorPhone: '',
+      buyerPhone: '',
+      investorUser: null,
+      buyerUser: null,
+      defaultPhoneCode: '998',
+      investorLookupError: '',
+      buyerLookupError: '',
       isEditingPayment: false,
       editablePaymentPerMonth: 0,
       manualPaymentPerMonth: null,
@@ -186,14 +242,78 @@ export default {
       this.manualPriceAfterProfitMargin = null;
       this.manualProfit = null;
     },
+    formatUser(user) {
+      if (!user) return '';
+      const first = user.firstName || user.firstname || '';
+      const last = user.lastName || user.lastname || '';
+      const phone = user.phone || user.phoneNumber || '';
+      const name = `${first} ${last}`.trim();
+      return [name || undefined, phone || undefined].filter(Boolean).join(' • ');
+    },
+    async addInvestorByPhone() {
+      if (!this.investorPhone) {
+        this.investorLookupError = this.$t('DealsPage.PhoneRequired');
+        return;
+      }
+      this.investorLookupError = '';
+      const user = await this.lookupUserByPhone(this.investorPhone, 'Investor');
+      if (user) {
+        this.investorUser = user;
+        this.investorLookupError = '';
+      } else {
+        this.investorUser = null;
+        this.investorLookupError = this.$t('DealsPage.UserNotFound');
+      }
+    },
+    async addBuyerByPhone() {
+      if (!this.buyerPhone) {
+        this.buyerLookupError = this.$t('DealsPage.PhoneRequired');
+        return;
+      }
+      this.buyerLookupError = '';
+      const user = await this.lookupUserByPhone(this.buyerPhone, 'Buyer');
+      if (user) {
+        this.buyerUser = user;
+        this.buyerLookupError = '';
+      } else {
+        this.buyerUser = null;
+        this.buyerLookupError = this.$t('DealsPage.UserNotFound');
+      }
+    },
+    async lookupUserByPhone(phone, role) {
+      const token = localStorage.getItem('token');
+      try {
+        const fullPhone = `${this.defaultPhoneCode}${String(phone)}`;
+        const encodedPhone = encodeURIComponent(fullPhone);
+        const base = role === 'Investor' ? '/api/Investor/by-phone' : '/api/Buyer/by-phone';
+        const url = `${base}/${encodedPhone}`;
+        const response = await axios.get(url, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        return response.data || null;
+      } catch (e) {
+        return null;
+      }
+    },
     async createDeal() {
       const token = localStorage.getItem('token');
       const user = JSON.parse(localStorage.getItem('user'));
 
+      // Validate paymentDayOfMonth if provided
+      if (this.payment.paymentDayOfMonth !== null) {
+        const day = Number(this.payment.paymentDayOfMonth);
+        if (!(day >= 1 && day <= 31)) {
+          this.errorMessage = this.$t('DealsPage.PaymentDayOfMonthInvalid');
+          return;
+        }
+      }
+
       const requestBody = {
         brokerId: user.id,
-        investorId: user.id,
-        buyerId: user.id,
+        investorId: this.investorUser.id ?? '1', // fallback to test value if not added
+        buyerId: this.buyerUser.id ?? '2',       // fallback to test value if not added
         brand: this.product.brand,
         model: this.product.model,
         year: this.product.year,
@@ -202,6 +322,7 @@ export default {
         price: this.product.price,
         downpayment: this.payment.downpayment,
         periodMonth: this.payment.periodMonth,
+        paymentDayOfMonth: this.payment.paymentDayOfMonth,
         totalProfit: this.profit,
         brokerProfit: 0
       };
