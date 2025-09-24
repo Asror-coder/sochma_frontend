@@ -15,7 +15,8 @@
         "logout": "Logout"
     },
     "PaymentsPage" : {
-        "Payments" : "Payments"
+        "Payments" : "Payments",
+        "NewPayment": "New Payment"
     },
     "HomePage" : {
         "Home" : "Home",
@@ -107,7 +108,12 @@
         "Amount": "Amount",
         "Status": "Status",
         "Actions": "Actions",
-        "Add": "Add"
+        "Add": "Add",
+        "Close": "Close",
+        "Comments": "Comments",
+        "Create": "Create",
+        "NotVerified": "Not verified",
+        "Verified": "Verified"
     },
     "PaymentsView": {
         "PaymentHistory": "Payment History",

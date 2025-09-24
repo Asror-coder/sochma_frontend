@@ -106,7 +106,12 @@
         "Date": "Sana",
         "Amount": "Miqdor",
         "Actions": "Harakatlar",
-        "Add": "Qo'shish"
+        "Add": "Qo'shish",
+        "Close": "Yopish",
+        "Comments": "Izohlar",
+        "Create": "Yaratish",
+        "NotVerified": "Tasdiqlanmagan",
+        "Verified": "Tasdiqlangan"
     },
     "PaymentsView": {
         "PaymentHistory": "To'lov tarixi",
@@ -114,6 +119,6 @@
         "Date": "Sana",
         "Status": "Holat",
         "NoPayments": "To'lovlar topilmadi.",
-         "Create": "Yaratish"
+        "Create": "Yaratish"
     }
 }
