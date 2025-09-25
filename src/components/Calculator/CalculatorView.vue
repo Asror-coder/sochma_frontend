@@ -7,6 +7,10 @@
       <!-- Display Area -->
       <div class="bg-blue-50 border border-blue-200 rounded-lg px-6 py-4 mb-6">
         <div class="flex flex-col md:flex-row md:justify-between gap-4">
+          <div v-if="result.nasiyaPrice" class="flex-1 text-center">
+            <div class="text-xs text-gray-500">{{ $t('Common.NasiyaPrice') }}</div>
+            <div class="text-2xl font-semibold text-blue-700">${{ result.nasiyaPrice }}</div>
+          </div>
           <div v-if="result.investment" class="flex-1 text-center">
             <div class="text-xs text-gray-500">{{ $t('CalculatorPage.Investment') }}</div>
             <div class="text-2xl font-semibold text-blue-700">${{ result.investment }}</div>
@@ -88,16 +92,22 @@ export default {
       result: {
         totalPayment: '',
         monthlyPayment: '',
-        investment: ''
+        investment: '',
+        nasiyaPrice: ''
       }
     }
   },
   methods: {
     calculate() {
-      var profit = this.form.profit / 100 + 1
-      this.result.investment = this.form.price - this.form.downpayment
-      this.result.totalPayment = this.result.investment * profit
-      this.result.monthlyPayment = Math.ceil(this.result.totalPayment / this.form.period)
+      const price = Number(this.form.price) || 0
+      const downpayment = Number(this.form.downpayment) || 0
+      const period = Number(this.form.period) || 1
+      const profitMultiplier = (Number(this.form.profit) || 0) / 100 + 1
+
+      this.result.investment = Math.max(price - downpayment, 0)
+      this.result.totalPayment = +(this.result.investment * profitMultiplier).toFixed(2)
+      this.result.monthlyPayment = Math.ceil(this.result.totalPayment / period)
+      this.result.nasiyaPrice = +(this.result.totalPayment + downpayment).toFixed(2)
     }
   }
 }

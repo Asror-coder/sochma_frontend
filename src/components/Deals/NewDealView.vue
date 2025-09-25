@@ -32,11 +32,13 @@
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Price') }}</label>
-              <input v-model.number="product.price" type="numbers" :placeholder="$t('DealsPage.Price')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
+              <input v-model.number="product.price" type="numbers" :placeholder="$t('DealsPage.Price')" 
+              class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg focus:ring-2 focus:ring-blue-300" />
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">{{ $t('DealsPage.Description') }}</label>
-              <textarea v-model="product.description" :placeholder="$t('DealsPage.Description')" class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg h-20 resize-none focus:ring-2 focus:ring-blue-300"></textarea>
+              <textarea v-model="product.description" :placeholder="$t('DealsPage.Description')" 
+              class="bg-gray-50 border border-gray-300 w-full p-3 rounded-lg h-20 resize-none focus:ring-2 focus:ring-blue-300"></textarea>
             </div>
           </div>
         </div>
@@ -75,6 +77,10 @@
           <div class="bg-blue-50 border border-blue-200 rounded-lg px-6 py-4">
             <h2 class="text-lg font-semibold mb-4 text-blue-600">{{ $t('DealsPage.InvestmentReturn') }}</h2>
             <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">{{ $t('Common.NasiyaPrice') }}</span>
+                <span class="text-xl font-semibold text-blue-700">{{ nasiyaPrice }}</span>
+              </div>
               <div class="flex justify-between items-center">
                 <span class="text-gray-600">{{ $t('DealsPage.Investment') }}</span>
                 <span class="text-xl font-semibold text-blue-700">{{ priceAfterDownPayment }}</span>
@@ -220,6 +226,10 @@ export default {
         return this.manualProfit;
       }
       return Math.round(this.priceAfterProfitMargin - this.priceAfterDownPayment);
+    },
+    nasiyaPrice() {
+      // total return + downpayment
+      return Math.round(this.priceAfterProfitMargin + this.payment.downpayment);
     }
   },
   methods: {

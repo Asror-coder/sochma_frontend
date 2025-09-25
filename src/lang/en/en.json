@@ -87,6 +87,7 @@
         "Investment": "Investment",
         "TotalPayment": "Total payment",
         "MonthlyPayment": "Monthly payment",
+        "NasiyaPrice": "Nasiya price",
         "ProductPrice": "Product price",
         "ProductPricePlaceholder": "Enter product price",
         "Downpayment": "Downpayment",
@@ -113,7 +114,8 @@
         "Comments": "Comments",
         "Create": "Create",
         "NotVerified": "Not verified",
-        "Verified": "Verified"
+        "Verified": "Verified",
+        "NasiyaPrice": "Nasiya price"
     },
     "PaymentsView": {
         "PaymentHistory": "Payment History",

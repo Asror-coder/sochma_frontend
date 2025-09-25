@@ -86,6 +86,7 @@
         "Investment": "Sarmoya",
         "TotalPayment": "Umumiy to'lov",
         "MonthlyPayment": "Oylik to'lov",
+        "NasiyaPrice": "Nasiya narxi",
         "ProductPrice": "Mahsulot narxi",
         "ProductPricePlaceholder": "Mahsulot narxini kiriting",
         "Downpayment": "Oldindan to'lov",
@@ -111,7 +112,8 @@
         "Comments": "Izohlar",
         "Create": "Yaratish",
         "NotVerified": "Tasdiqlanmagan",
-        "Verified": "Tasdiqlangan"
+        "Verified": "Tasdiqlangan",
+        "NasiyaPrice": "Nasiya narxi"
     },
     "PaymentsView": {
         "PaymentHistory": "To'lov tarixi",

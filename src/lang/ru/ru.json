@@ -111,7 +111,8 @@
         "Comments": "Комментарии",
         "Create": "Создать",
         "NotVerified": "Не подтверждено",
-        "Verified": "Подтверждено"
+        "Verified": "Подтверждено",
+        "NasiyaPrice": "Насия цена"
     },
     "PaymentsView": {
         "PaymentHistory": "История платежей",

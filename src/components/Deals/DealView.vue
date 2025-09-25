@@ -42,13 +42,13 @@
                                     <div class="grid grid-cols-3 items-center gap-0">
                                         <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.TotalReturn') }}</span>
                                         <span></span>
-                                        <span class="font-semibold text-green-700 text-right">${{ deal.totalProfit }}</span>
+                                        <span class="font-semibold text-green-700 text-right">${{ deal.totalPayment }}</span>
                                     </div>
-                                    <div class="grid grid-cols-3 items-center gap-0">
+                                    <!-- <div class="grid grid-cols-3 items-center gap-0">
                                         <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.Profit') }}</span>
                                         <span></span>
                                         <span class="font-semibold text-green-700 text-right">${{ deal.brokerProfit }}</span>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
