@@ -1,10 +1,10 @@
 <template>
-    <main class="flex justify-center my-28">
-        <div class="flex flex-col">
+    <main class="flex justify-center my-16 sm:my-24">
+        <div class="flex flex-col w-full max-w-screen-md px-4 sm:px-0">
 
             <!-- Deal Details Section -->
-            <div class="w-full max-w-3xl rounded-2xl shadow-lg p-10 bg-white">
-                <h1 class="text-3xl font-bold text-center mb-8 text-blue-700">
+            <div class="w-full rounded-2xl shadow-lg p-6 sm:p-10 bg-white">
+                <h1 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-blue-700 leading-snug">
                     {{ $t('DealsPage.DealDetails') }}
                 </h1>
                 <div v-if="loading" class="text-gray-400 animate-pulse text-center">
@@ -17,64 +17,54 @@
                     <div class="">
                         <div class="flex flex-col md:flex-row md:justify-between md:gap-x-12">
                             <!-- Left: Product information -->
-                            <div class="flex-1 mb-6 md:mb-0">
+                            <div class="flex-1 mb-6 md:mb-0 min-w-0">
                                 <div class="flex items-center mb-2">
-                                    <span class="font-bold text-2xl text-gray-800">{{ deal.brand }} {{ deal.model }}</span>
+                                    <span class="font-bold text-xl sm:text-2xl text-gray-800 break-words">{{ deal.brand }} {{ deal.model }}</span>
                                 </div>
-                                <div class="text-base text-gray-600 mb-1">{{ deal.description }}</div>
-                                <div class="text-xs text-gray-400">{{ $t('DealsPage.SerialNumber') }}: {{ deal.serialNumber }}</div>
-                                <div class="text-xs text-gray-400">{{ $t('DealsPage.Year') }}: {{ deal.year }}</div>
-                                <div class="mt-4 text-sm text-gray-500">
+                                <div class="text-sm sm:text-base text-gray-600 mb-1 whitespace-pre-line break-words">{{ deal.description }}</div>
+                                <div class="text-[11px] sm:text-xs text-gray-400">{{ $t('DealsPage.SerialNumber') }}: {{ deal.serialNumber }}</div>
+                                <div class="text-[11px] sm:text-xs text-gray-400">{{ $t('DealsPage.Year') }}: {{ deal.year }}</div>
+                                <div class="mt-4 text-sm text-gray-500 flex flex-wrap items-baseline gap-1">
                                     {{ $t('DealsPage.Price') }}:
                                     <span class="font-semibold text-gray-800">${{ deal.price }}</span>
                                 </div>
                             </div>
                             <!-- Right: Payment information -->
                             <div class="md:ml-12 w-full md:w-80">
-                                <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
-                                    <div class="grid grid-cols-3 items-center gap-0">
-                                        <span class="text-gray-500 whitespace-nowrap">{{ $t('Common.NasiyaPrice') }}</span>
-                                        <span></span>
-                                        <span class="font-bold text-xl text-blue-700 text-right">${{ nasiyaPrice }}</span>
+                                <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2 text-sm">
+                                    <div class="flex items-start justify-between gap-4">
+                                        <span class="text-gray-500 leading-snug">{{ $t('Common.NasiyaPrice') }}</span>
+                                        <span class="font-bold text-base sm:text-xl text-blue-700 text-right">${{ nasiyaPrice }}</span>
                                     </div>
-                                    <div class="grid grid-cols-3 items-center gap-0">
-                                        <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.Downpayment') }}</span>
-                                        <span></span>
+                                    <div class="flex items-start justify-between gap-4">
+                                        <span class="text-gray-500 leading-snug">{{ $t('DealsPage.Downpayment') }}</span>
                                         <span class="font-semibold text-gray-700 text-right">${{ deal.downpayment }}</span>
                                     </div>
-                                    <div class="grid grid-cols-3 items-center gap-0">
-                                        <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.Investment') }}</span>
-                                        <span></span>
+                                    <div class="flex items-start justify-between gap-4">
+                                        <span class="text-gray-500 leading-snug">{{ $t('DealsPage.Investment') }}</span>
                                         <span class="font-semibold text-gray-700 text-right">${{ investment }}</span>
                                     </div>
-                                    <div class="grid grid-cols-3 items-center gap-0">
-                                        <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.TotalReturn') }}</span>
-                                        <span></span>
+                                    <div class="flex items-start justify-between gap-4">
+                                        <span class="text-gray-500 leading-snug">{{ $t('DealsPage.TotalReturn') }}</span>
                                         <span class="font-semibold text-green-700 text-right">${{ deal.totalPayment }}</span>
                                     </div>
-                                    <div class="grid grid-cols-3 items-center gap-0">
-                                        <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PeriodMonth') }}</span>
-                                        <span></span>
+                                    <div class="flex items-start justify-between gap-4">
+                                        <span class="text-gray-500 leading-snug">{{ $t('DealsPage.PeriodMonth') }}</span>
                                         <span class="font-semibold text-gray-700 text-right">{{ deal.periodMonth }}</span>
                                     </div>
-                                    <div v-if="deal.paymentDayOfMonth" class="col-span-3 -mt-1 mb-1 text-[14px] text-gray-400 text-right italic">
+                                    <div v-if="deal.paymentDayOfMonth" class="mt-1 text-[12px] sm:text-[14px] text-gray-400 text-right italic">
                                         {{ $t('DealsPage.PaymentDayOfMonth') }}: <span class="not-italic font-medium">{{ deal.paymentDayOfMonth }}</span>
                                     </div>
-                                    <!-- <div class="grid grid-cols-3 items-center gap-0">
-                                        <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.Profit') }}</span>
-                                        <span></span>
-                                        <span class="font-semibold text-green-700 text-right">${{ deal.brokerProfit }}</span>
-                                    </div> -->
                                 </div>
                             </div>
                         </div>
 
                         <!-- Participants Section -->
                         <div class="mt-8 border-t pt-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">{{ $t('DealsPage.Participants') }}</h3>
+                            <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-4">{{ $t('DealsPage.Participants') }}</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <!-- Investor -->
-                                <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="bg-gray-50 rounded-lg p-4 text-sm sm:text-base">
                                     <div class="text-sm text-gray-500 mb-1">{{ $t('DealsPage.Investor') }}</div>
                                     <div class="text-base font-semibold text-gray-800">{{ deal.investorFullName || '-' }}</div>
                                     <div class="text-sm text-gray-600 mt-1">
@@ -82,7 +72,7 @@
                                     </div>
                                 </div>
                                 <!-- Buyer -->
-                                <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="bg-gray-50 rounded-lg p-4 text-sm sm:text-base">
                                     <div class="text-sm text-gray-500 mb-1">{{ $t('DealsPage.Buyer') }}</div>
                                     <div class="text-base font-semibold text-gray-800">{{ deal.buyerFullName || '-' }}</div>
                                     <div class="text-sm text-gray-600 mt-1">
@@ -96,7 +86,7 @@
             </div>
 
             <!-- Payments Section -->
-            <div class="w-full max-w-3xl rounded-2xl shadow-lg p-10 bg-white mt-10">
+            <div class="w-full rounded-2xl shadow-lg p-6 sm:p-10 bg-white mt-8 sm:mt-10">
                 <PaymentsView />
             </div>
         </div>

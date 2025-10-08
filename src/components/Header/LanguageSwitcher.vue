@@ -1,27 +1,27 @@
 <template>
-  <div class="relative inline-block text-left">
+  <div :class="rootClasses" ref="rootEl">
     <button
       @click="toggleDropdown"
-      class="bg-white border border-gray-300 rounded px-4 py-2 shadow-sm flex items-center"
+      :class="buttonClasses"
     >
-      {{ currentLabel }}
-      <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <span>{{ currentLabel }}</span>
+      <svg class="ml-2 w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
       </svg>
     </button>
     <div
       v-if="dropdownOpen"
-      class="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded shadow-lg z-10"
+      :class="['absolute', dropdownPositionClasses, 'bg-white/95 backdrop-blur border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden']"
     >
-      <ul>
+      <ul class="py-1">
         <li>
-          <button @click="selectLanguage('en')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Eng</button>
+          <button @click="selectLanguage('en')" class="w-full text-left px-4 py-2.5 hover:bg-blue-50 text-sm transition">Eng</button>
         </li>
         <li>
-          <button @click="selectLanguage('uz')" class="w-full text-left px-4 py-2 hover:bg-gray-100">O'zb</button>
+          <button @click="selectLanguage('uz')" class="w-full text-left px-4 py-2.5 hover:bg-blue-50 text-sm transition">O'zb</button>
         </li>
         <li>
-          <button @click="selectLanguage('ru')" class="w-full text-left px-4 py-2 hover:bg-gray-100">Рус</button>
+          <button @click="selectLanguage('ru')" class="w-full text-left px-4 py-2.5 hover:bg-blue-50 text-sm transition">Рус</button>
         </li>
       </ul>
     </div>
@@ -31,6 +31,10 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
+
+const props = defineProps({
+  fullWidth: { type: Boolean, default: false }
+});
 
 const { locale } = useI18n();
 const dropdownOpen = ref(false);
@@ -42,6 +46,26 @@ const labels = {
 };
 
 const currentLabel = computed(() => labels[locale.value] || 'Eng');
+
+const rootClasses = computed(() => [
+  'language-switcher-root relative text-left',
+  props.fullWidth ? 'w-full' : 'inline-block'
+]);
+
+const buttonClasses = computed(() => [
+  'border rounded-lg px-4 py-2.5 shadow-sm flex items-center justify-between text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1',
+  'bg-white/90 backdrop-blur border-gray-300 hover:border-blue-400 hover:text-blue-700',
+  props.fullWidth ? 'w-full' : ''
+]);
+
+// Dropdown positioning: if fullWidth (mobile drawer bottom) we drop upwards to remain visible.
+const dropdownPositionClasses = computed(() => {
+  if (props.fullWidth) {
+    return 'left-0 bottom-full mb-2 w-full';
+  }
+    // default desktop style
+  return 'right-0 mt-2 w-40';
+});
 
 function toggleDropdown() {
   dropdownOpen.value = !dropdownOpen.value;
@@ -55,7 +79,9 @@ function selectLanguage(lang) {
 
 // Close dropdown when clicking outside
 function handleClickOutside(event) {
-  if (!event.target.closest('.relative.inline-block')) {
+  if (!(event.target instanceof Element)) return;
+  // If click is not inside our root element, close
+  if (!event.target.closest('.language-switcher-root')) {
     dropdownOpen.value = false;
   }
 }
@@ -68,3 +94,7 @@ onBeforeUnmount(() => {
   window.removeEventListener('click', handleClickOutside);
 });
 </script>
+
+<style scoped>
+/* (Optional) spacing tweak when fullWidth inside stacked layouts */
+</style>

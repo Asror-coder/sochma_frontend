@@ -1,10 +1,10 @@
 <template>
-    <div>
-        <div class="flex items-center justify-between mb-2">
-            <h2 class="text-2xl font-bold text-gray-800">{{ $t('PaymentsView.PaymentHistory') }}</h2>
+    <div class="w-full">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-800">{{ $t('PaymentsView.PaymentHistory') }}</h2>
             <button
                 :class="[
-                    'ml-4 font-semibold px-4 py-2 rounded-lg transition',
+                    'font-semibold px-4 py-2 rounded-lg transition text-sm sm:text-base',
                     showNewPaymentForm
                         ? 'bg-transparent text-red-600 hover:text-red-700 hover:bg-transparent'
                         : 'bg-blue-600 hover:bg-blue-700 text-white shadow'
@@ -16,24 +16,26 @@
         </div>
         <!-- Collapsible new payment form -->
         <div v-if="showNewPaymentForm" class="mb-6">
-            <div class="flex flex-col md:flex-row md:items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
-                <div class="text-sm text-gray-700">
-                    <span class="text-gray-500">{{ $t('Common.Amount') }}</span>:
+            <div class="flex flex-col sm:flex-row sm:items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
+                <div class="text-sm text-gray-700 flex items-center">
+                    <span class="text-gray-500 mr-1">{{ $t('Common.Amount') }}</span>
                     <span class="font-semibold text-blue-700">${{ payPerMonth }}</span>
                 </div>
-                <input
-                    type="date"
-                    v-model="dayOfPayment"
-                    class="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    :placeholder="$t('PaymentsView.DateOfPayment') || 'Date of payment'"
-                />
-                <input
-                    type="text"
-                    v-model="newPaymentComments"
-                    class="border border-gray-300 rounded px-2 py-1 text-sm md:flex-1 w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    :placeholder="$t('Common.Comments') || 'Comments'"
-                />
-                <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg shadow transition" @click="onCreatePayment">
+                <div class="flex flex-col sm:flex-row gap-3 w-full">
+                    <input
+                        type="date"
+                        v-model="dayOfPayment"
+                        class="border border-gray-300 rounded px-2 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 flex-1"
+                        :placeholder="$t('PaymentsView.DateOfPayment') || 'Date of payment'"
+                    />
+                    <input
+                        type="text"
+                        v-model="newPaymentComments"
+                        class="border border-gray-300 rounded px-2 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        :placeholder="$t('Common.Comments') || 'Comments'"
+                    />
+                </div>
+                <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg shadow transition w-full sm:w-auto" @click="onCreatePayment">
                     {{ $t('Common.Create') || 'Create' }}
                 </button>
             </div>
@@ -41,37 +43,39 @@
         <div v-if="loading" class="text-center text-gray-500 mt-4">{{ $t('Common.Loading') }}</div>
         <div v-else class="mt-6">
             <div v-if="payments.length === 0" class="text-center text-gray-500">{{ $t('PaymentsView.NoPayments') }}</div>
-            <table v-else class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
-                <thead>
-                    <tr class="bg-gray-100">
-                        <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">{{ $t('PaymentsView.Date') || 'Date of payment' }}</th>
-                        <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">{{ $t('Common.Amount') }}</th>
-                        <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">{{ $t('Common.Comments') || 'Comments' }}</th>
-                        <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">{{ $t('Common.Status') || 'Status' }}</th>
-                        <th class="py-3 px-6 text-right text-sm font-medium text-gray-600">{{ $t('Common.Actions') || 'Actions' }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="payment in payments" :key="payment.id" class="border-t border-gray-200 hover:bg-gray-50">
-                        <td class="py-4 px-6 text-sm text-gray-700">{{ payment.paymentDate }}</td>
-                        <td class="py-4 px-6 text-sm text-gray-700">${{ payment.amount }}</td>
-                        <td class="py-4 px-6 text-sm text-gray-700">{{ payment.comments || '-' }}</td>
-                        <td class="py-4 px-6 text-sm">
-                            <span :class="(payment.status || '').toLowerCase() === 'created' ? 'text-red-600 font-semibold' : 'text-green-600 font-semibold'">
-                                {{ (payment.status || '').toLowerCase() === 'created' ? ($t('Common.NotVerified') || 'Not verified') : ($t('Common.Verified') || 'Verified') }}
-                            </span>
-                        </td>
-                        <td class="py-4 px-6 text-sm text-right">
-                            <button
-                                class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded shadow text-xs font-semibold"
-                                @click="onDeletePayment(payment.id)"
-                            >
-                                {{ $t('Common.Delete') || 'Delete' }}
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div v-else class="overflow-x-auto -mx-4 sm:mx-0">
+                <table class="min-w-[640px] w-full bg-white border border-gray-200 rounded-lg shadow-md text-sm">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="py-3 px-4 sm:px-6 text-left font-medium text-gray-600 whitespace-nowrap">{{ $t('PaymentsView.Date') || 'Date of payment' }}</th>
+                            <th class="py-3 px-4 sm:px-6 text-left font-medium text-gray-600 whitespace-nowrap">{{ $t('Common.Amount') }}</th>
+                            <th class="py-3 px-4 sm:px-6 text-left font-medium text-gray-600 whitespace-nowrap">{{ $t('Common.Comments') || 'Comments' }}</th>
+                            <th class="py-3 px-4 sm:px-6 text-left font-medium text-gray-600 whitespace-nowrap">{{ $t('Common.Status') || 'Status' }}</th>
+                            <th class="py-3 px-4 sm:px-6 text-right font-medium text-gray-600 whitespace-nowrap">{{ $t('Common.Actions') || 'Actions' }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="payment in payments" :key="payment.id" class="border-t border-gray-200 hover:bg-gray-50">
+                            <td class="py-3 px-4 sm:px-6 text-gray-700">{{ payment.paymentDate }}</td>
+                            <td class="py-3 px-4 sm:px-6 text-gray-700">${{ payment.amount }}</td>
+                            <td class="py-3 px-4 sm:px-6">
+                                <span :class="(payment.status || '').toLowerCase() === 'created' ? 'text-red-600 font-semibold' : 'text-green-600 font-semibold'">
+                                    {{ (payment.status || '').toLowerCase() === 'created' ? ($t('Common.NotVerified') || 'Not verified') : ($t('Common.Verified') || 'Verified') }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-4 sm:px-6 text-gray-700">{{ payment.comments || '-' }}</td>
+                            <td class="py-3 px-4 sm:px-6 text-right">
+                                <button
+                                    class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded shadow text-xs font-semibold"
+                                    @click="onDeletePayment(payment.id)"
+                                >
+                                    {{ $t('Common.Delete') || 'Delete' }}
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </template>

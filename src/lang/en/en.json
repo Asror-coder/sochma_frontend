@@ -21,17 +21,18 @@
     "HomePage" : {
         "Home" : "Home",
         "welcomeMessage" : "Welcome to the Sochma platform! Explore our services and manage your investments with ease.",
-    "heroTitle": "Welcome, {name}",
-    "createDealBtn": "Create New Deal",
-    "openCalculatorBtn": "Open Calculator",
-    "features": {
-            "investorsTitle": "Searching for Investors & Buyers",
-            "investorsDesc": "Easily connect with potential investors and buyers for your deals.",
-            "dealTitle": "Deal Management",
-            "dealDesc": "Track, create, and manage all your deals in one place.",
-            "dashboardTitle": "Personalized Dashboard",
-            "dashboardDesc": "Get insights and analytics tailored to your activity."
-        }
+        "heroTitle": "Welcome, {name}",
+        "createDealBtn": "Create New Deal",
+        "openCalculatorBtn": "Open Calculator",
+        "openMyDealsBtn": "Open My Deals",
+        "features": {
+                "investorsTitle": "Searching for Investors & Buyers",
+                "investorsDesc": "Easily connect with potential investors and buyers for your deals.",
+                "dealTitle": "Deal Management",
+                "dealDesc": "Track, create, and manage all your deals in one place.",
+                "dashboardTitle": "Personalized Dashboard",
+                "dashboardDesc": "Get insights and analytics tailored to your activity."
+            }
     },
     "DealsPage" : {
         "Deals" : "Deals",

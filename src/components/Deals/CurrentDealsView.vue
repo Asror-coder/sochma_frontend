@@ -1,10 +1,19 @@
 <template>
-  <main class="flex justify-center my-28">
-    <div class="flex flex-col">
+  <main class="flex justify-center my-12 sm:my-16">
+    <div class="flex flex-col w-full max-w-screen-md px-4 sm:px-0">
       <div v-if="successMessage" class="mb-4 p-3 rounded bg-green-100 text-green-700 text-center font-semibold">
         {{ successMessage }}
       </div>
-      <h1 class="text-3xl pb-5 text-gray-500">{{ $t('DealsPage.CurrentDeals') }}</h1>
+  <div class="flex items-center justify-between pb-5 gap-4 flex-wrap w-full">
+        <h1 class="text-2xl sm:text-3xl text-gray-500">{{ $t('DealsPage.Deals') }}</h1>
+        <router-link
+          :to="{ name: 'oldDeals' }"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-blue-600 text-blue-700 bg-white hover:bg-blue-50 font-medium shadow-sm transition text-sm md:text-base"
+        >
+          {{ $t('DealsPage.PastDeals') }}
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </router-link>
+      </div>
 
       <div v-if="loading" class="text-gray-400 animate-pulse">
         {{ $t('Common.Loading') }}
@@ -16,36 +25,52 @@
           {{ $t('Common.NoDealsFound') }}
         </div>
 
-        <div class="grid gap-6">
+        <!-- Deal Cards -->
+        <div class="grid gap-6 w-full">
           <div
             v-for="deal in deals"
             :key="deal.dealId || deal.id"
-            class="cursor-pointer bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl p-6 transition-all"
+            class="cursor-pointer w-full bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl p-4 sm:p-6 transition-all"
             @click="goToDealDetail(deal)"
           >
             <div class="flex flex-col md:flex-row md:items-center md:justify-between md:gap-x-32">
-              <!-- Left column (md+): Payment info -->
-              <div class="flex-1 order-1 md:order-1 md:mt-0">
+              <!-- Product info first on mobile -->
+              <div class="flex-1 order-1 md:order-2 md:mt-0 md:ml-4">
+                <div class="mb-1">
+                  <span class="font-bold text-xl sm:text-2xl text-gray-800">{{ deal.brand }} {{ deal.model }}</span>
+                </div>
+                <div class="mb-2 flex items-center gap-3">
+                  <span class="text-sm sm:text-base text-gray-500">{{ deal.year }}</span>
+                  <span class="text-xs text-gray-400">{{ $t('DealsPage.Price') }}: ${{ deal.price }}</span>
+                </div>
+                <div class="text-xs sm:text-sm text-gray-700 flex flex-col gap-1 sm:mt-3">
+                  <div><span class="text-gray-500">{{ $t('DealsPage.Investor') }}:</span> <span class="font-medium">{{ deal.investorFullName }}</span></div>
+                  <div><span class="text-gray-500">{{ $t('DealsPage.Buyer') }}:</span> <span class="font-medium">{{ deal.buyerFullName }}</span></div>
+                </div>
+              </div>
+
+              <!-- Payment info -->
+              <div class="flex-1 order-2 md:order-1 md:mt-0 mt-4">
                 <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
-                  <div class="grid grid-cols-3 items-center gap-0">
+                  <div class="grid grid-cols-2 sm:grid-cols-3 items-center gap-0">
                     <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.Investment') }}</span>
-                    <span></span>
-                    <span class="font-semibold text-gray-700 text-right">${{ deal.investmentAmount }}</span>
+                    <span class="font-semibold text-gray-700 text-right col-start-2 sm:col-start-auto">${{ deal.investmentAmount }}</span>
+                    <span class="hidden sm:inline-block"></span>
                   </div>
-                  <div class="grid grid-cols-3 items-center gap-0">
+                  <div class="grid grid-cols-2 sm:grid-cols-3 items-center gap-0">
                     <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PayedUpAmount') }}</span>
-                    <span></span>
-                    <span class="font-semibold text-gray-700 text-right">${{ deal.payedUpAmount }}</span>
+                    <span class="font-semibold text-gray-700 text-right col-start-2 sm:col-start-auto">${{ deal.payedUpAmount }}</span>
+                    <span class="hidden sm:inline-block"></span>
                   </div>
-                  <div class="grid grid-cols-3 items-center gap-0">
+                  <div class="grid grid-cols-2 sm:grid-cols-3 items-center gap-0">
                     <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PeriodMonth') }}</span>
-                    <span></span>
-                    <span class="font-semibold text-gray-700 text-right">{{ deal.periodMonth }}</span>
+                    <span class="font-semibold text-gray-700 text-right col-start-2 sm:col-start-auto">{{ deal.periodMonth }}</span>
+                    <span class="hidden sm:inline-block"></span>
                   </div>
-                  <div class="grid grid-cols-3 items-center gap-0">
+                  <div class="grid grid-cols-2 sm:grid-cols-3 items-center gap-0">
                     <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PayedMonths') }}</span>
-                    <span></span>
-                    <span class="font-semibold text-gray-700 text-right">{{ deal.payedMonths }}</span>
+                    <span class="font-semibold text-gray-700 text-right col-start-2 sm:col-start-auto">{{ deal.payedMonths }}</span>
+                    <span class="hidden sm:inline-block"></span>
                   </div>
                   <!-- Repayment progress: dashed line per month -->
                   <div class="mt-3">
@@ -53,26 +78,11 @@
                       <span
                         v-for="n in deal.periodMonth"
                         :key="`${deal.dealId || deal.id}-dash-${n}`"
-                        class="h-1.5 rounded-full flex-1 basis-0"
+                        class="h-1 sm:h-1.5 rounded-full flex-1 basis-0"
                         :class="n <= deal.payedMonths ? 'bg-green-500' : 'bg-red-300'"
                       ></span>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <!-- Right column (md+): Product info -->
-              <div class="flex-1 order-2 md:order-2 mt-6 md:mt-0 md:ml-4">
-                <div class="mb-1">
-                  <span class="font-bold text-2xl text-gray-800">{{ deal.brand }} {{ deal.model }}</span>
-                </div>
-                <div class="mb-2">
-                  <span class="text-base text-gray-500">{{ deal.year }}</span>
-                </div>
-                <div class="text-xs text-gray-400">{{ $t('DealsPage.Price') }}: ${{ deal.price }}</div>
-                <div class="mt-3 text-sm text-gray-700">
-                  <div><span class="text-gray-500">{{ $t('DealsPage.Investor') }}:</span> <span class="font-medium">{{ deal.investorFullName }}</span></div>
-                  <div><span class="text-gray-500">{{ $t('DealsPage.Buyer') }}:</span> <span class="font-medium">{{ deal.buyerFullName }}</span></div>
                 </div>
               </div>
             </div>
