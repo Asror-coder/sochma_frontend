@@ -115,7 +115,10 @@
         "Create": "Create",
         "NotVerified": "Not verified",
         "Verified": "Verified",
-        "NasiyaPrice": "Nasiya price"
+        "NasiyaPrice": "Nasiya price",
+        "Previous": "Previous",
+        "Next": "Next",
+        "Page": "Page"
     },
     "PaymentsView": {
         "PaymentHistory": "Payment History",

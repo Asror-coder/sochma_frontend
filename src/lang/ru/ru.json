@@ -72,7 +72,7 @@
         "InvestmentAmount": "Сумма инвестиций",
         "PayedMonths": "Оплаченные месяцы",
         "PayedUpAmount": "Оплаченная сумма",
-        "Edit": "Редактировать",
+        "Edit": "Изменить",
         "Save": "Сохранить",
         "Cancel": "Отмена",
         "CreateNewDeal": "Создать новую сделку",
@@ -112,7 +112,10 @@
         "Create": "Создать",
         "NotVerified": "Не подтверждено",
         "Verified": "Подтверждено",
-        "NasiyaPrice": "Насия цена"
+        "NasiyaPrice": "Насия цена",
+        "Previous": "Предыдущая",
+        "Next": "Следующая",
+        "Page": "Страница"
     },
     "PaymentsView": {
         "PaymentHistory": "История платежей",

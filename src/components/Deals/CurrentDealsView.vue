@@ -78,25 +78,48 @@
             </div>
           </div>
         </div>
-        <!-- Pagination Controls -->
-        <div v-if="pagination.totalPages > 1" class="flex justify-center mt-8 gap-2">
-          <button
-            class="px-4 py-2 rounded bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300"
-            :disabled="pagination.pageNumber === 1"
-            @click="changePage(pagination.pageNumber - 1)"
-          >
-            {{ $t('Common.Previous') }}
-          </button>
-          <span class="px-4 py-2 text-gray-600 font-medium">
-            {{ $t('Common.Page') }} {{ pagination.pageNumber }} / {{ pagination.totalPages }}
-          </span>
-          <button
-            class="px-4 py-2 rounded bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300"
-            :disabled="pagination.pageNumber === pagination.totalPages"
-            @click="changePage(pagination.pageNumber + 1)"
-          >
-            {{ $t('Common.Next') }}
-          </button>
+
+        <!-- Pagination Controls (Enhanced) -->
+        <div v-if="pagination.totalPages > 1" class="flex justify-center mt-10">
+          <nav class="flex items-center gap-2 select-none" aria-label="Pagination">
+            <!-- Previous -->
+            <button
+              class="w-10 h-10 flex items-center justify-center rounded-lg border text-gray-500 hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed"
+              :disabled="pagination.pageNumber === 1"
+              @click="changePage(pagination.pageNumber - 1)"
+              aria-label="Previous page"
+            >
+              <span class="text-lg">&lt;</span>
+            </button>
+
+            <!-- Page Items -->
+            <template v-for="(item, idx) in pageItems" :key="`pg-${idx}-${item.number || item.type}`">
+              <button
+                v-if="item.type === 'page'"
+                @click="changePage(item.number)"
+                :aria-current="item.number === pagination.pageNumber ? 'page' : undefined"
+                class="w-10 h-10 flex items-center justify-center rounded-lg border text-sm font-medium transition
+                       focus:outline-none focus:ring-2 focus:ring-blue-500
+                       "
+                :class="item.number === pagination.pageNumber
+                  ? 'bg-blue-600 border-blue-600 text-white shadow'
+                  : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'"
+              >
+                {{ item.number }}
+              </button>
+              <span v-else class="w-10 h-10 flex items-center justify-center text-gray-400">…</span>
+            </template>
+
+            <!-- Next -->
+            <button
+              class="w-10 h-10 flex items-center justify-center rounded-lg border text-gray-500 hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed"
+              :disabled="pagination.pageNumber === pagination.totalPages"
+              @click="changePage(pagination.pageNumber + 1)"
+              aria-label="Next page"
+            >
+              <span class="text-lg">&gt;</span>
+            </button>
+          </nav>
         </div>
       </div>
     </div>
@@ -115,7 +138,44 @@ export default {
   },
   computed: {
     ...mapState('deal', ['deals', 'loading']),
-    ...mapGetters('deal', ['pagination'])
+    ...mapGetters('deal', ['pagination']),
+    pageItems() {
+      const current = this.pagination.pageNumber;
+      const total = this.pagination.totalPages;
+      const items = [];
+
+      // Helper to push page
+      const pushPage = (n) => items.push({ type: 'page', number: n });
+
+      if (total <= 7) {
+        for (let i = 1; i <= total; i++) pushPage(i);
+        return items;
+      }
+
+      // Case: near start
+      if (current <= 3) {
+        pushPage(1); pushPage(2); pushPage(3); pushPage(4);
+        items.push({ type: 'ellipsis' });
+        pushPage(total);
+        return items;
+      }
+
+      // Case: near end
+      if (current >= total - 2) {
+        pushPage(1);
+        items.push({ type: 'ellipsis' });
+        for (let i = total - 3; i <= total; i++) pushPage(i);
+        return items;
+      }
+
+      // Middle
+      pushPage(1);
+      items.push({ type: 'ellipsis' });
+      pushPage(current - 1); pushPage(current); pushPage(current + 1);
+      items.push({ type: 'ellipsis' });
+      pushPage(total);
+      return items;
+    }
   },
   async mounted() {
     await this.$store.dispatch('deal/fetchDeals', { pageNumber: 1, pageSize: this.pagination.pageSize });

@@ -53,7 +53,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="payment in payments" :key="payment.id" class="border-t border-gray-200 hover:bg-gray-50">
-                        <td class="py-4 px-6 text-sm text-gray-700">{{ formatDate(payment.dateOfPayment || payment.createdAt) }}</td>
+                        <td class="py-4 px-6 text-sm text-gray-700">{{ payment.paymentDate }}</td>
                         <td class="py-4 px-6 text-sm text-gray-700">${{ payment.amount }}</td>
                         <td class="py-4 px-6 text-sm text-gray-700">{{ payment.comments || '-' }}</td>
                         <td class="py-4 px-6 text-sm">
@@ -97,11 +97,21 @@ export default {
         ...mapGetters('deal', ['payments', 'deal']),
         payPerMonth() {
             if (!this.deal || this.deal.periodMonth === 0) return 0;
-            return Math.round(this.deal.totalProfit / this.deal.periodMonth);
+            return Math.round(this.deal.totalPayment / this.deal.periodMonth);
         }
     },
     methods: {
     ...mapActions('deal', ['fetch_payments', 'create_payment', 'delete_payment']),
+        formatToApiDate(dateStr) {
+            // Convert from HTML date input (yyyy-MM-dd) to API expected (dd/MM/yyyy)
+            if (!dateStr || typeof dateStr !== 'string') return dateStr;
+            const parts = dateStr.split('-');
+            if (parts.length === 3) {
+                const [yyyy, mm, dd] = parts;
+                return `${dd}/${mm}/${yyyy}`;
+            }
+            return dateStr;
+        },
         toggleNewPaymentForm() {
             this.showNewPaymentForm = !this.showNewPaymentForm;
         },
@@ -110,14 +120,6 @@ export default {
                 await this.delete_payment(paymentId);
             }
         },
-            formatDate(dateStr) {
-                if (!dateStr) return '';
-                const d = new Date(dateStr);
-                const day = String(d.getDate()).padStart(2, '0');
-                const month = String(d.getMonth() + 1).padStart(2, '0');
-                const year = d.getFullYear();
-                return `${day}-${month}-${year}`;
-            },
         async onCreatePayment() {
             if (!this.deal) {
                 console.error('Deal information is not available.');
@@ -126,7 +128,7 @@ export default {
             await this.create_payment({
                 dealId: this.deal.dealId,
                 amount: this.payPerMonth,
-                dateOfPayment: this.dayOfPayment,
+                PaymentDate: this.formatToApiDate(this.dayOfPayment),
                 comments: this.newPaymentComments
             });
             this.newPaymentComments = '';

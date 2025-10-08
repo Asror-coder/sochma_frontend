@@ -167,13 +167,13 @@ export default {
     },
 
     // Create a new payment for a specific deal
-    async create_payment({ dispatch }, { dealId, amount, dateOfPayment, comments }) {
+  async create_payment({ dispatch }, { dealId, amount, PaymentDate, comments }) {
       try {
         const token = localStorage.getItem('token');
         await axios.post('/api/Payment/', {
           dealId,
           amount,
-          dateOfPayment,
+          PaymentDate,
           comments
         }, {
           headers: {

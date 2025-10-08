@@ -309,7 +309,6 @@ export default {
     },
     async createDeal() {
       const token = localStorage.getItem('token');
-      const user = JSON.parse(localStorage.getItem('user'));
 
       // Validate paymentDayOfMonth if provided
       if (this.payment.paymentDayOfMonth !== null) {
@@ -321,9 +320,8 @@ export default {
       }
 
       const requestBody = {
-        brokerId: user.id,
-        investorId: this.investorUser.id ?? '1', // fallback to test value if not added
-        buyerId: this.buyerUser.id ?? '2',       // fallback to test value if not added
+        investorId: (this.investorUser && this.investorUser.id) || 0,
+        buyerId: (this.buyerUser && this.buyerUser.id) || 0,
         brand: this.product.brand,
         model: this.product.model,
         year: this.product.year,
@@ -332,9 +330,8 @@ export default {
         price: this.product.price,
         downpayment: this.payment.downpayment,
         periodMonth: this.payment.periodMonth,
-        paymentDayOfMonth: this.payment.paymentDayOfMonth,
-        totalProfit: this.profit,
-        brokerProfit: 0
+        totalPayment: this.priceAfterProfitMargin,
+        paymentDayOfMonth: this.payment.paymentDayOfMonth
       };
 
       this.errorMessage = '';

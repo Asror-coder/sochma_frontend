@@ -45,7 +45,7 @@
         "Price": "Narx",
         "Description": "Tavsif",
         "PaymentInformation": "To'lov ma'lumotlari",
-        "Downpayment": "Oldindan to'lov",
+        "Downpayment": "Boshlang'ich to'lov",
         "PeriodMonth": "Davr (oylar)",
         "ProfitMargin": "Foyda marjasi (%)",
         "PaymentDayOfMonth": "Oylik to'lov kuni",
@@ -64,7 +64,7 @@
         "InvestmentReturn": "Investitsiyalarning qaytishi",
         "Investment": "Sarmoya",
         "TotalReturn": "Umumiy daromad",
-        "PaymentPerMonth": "Oyiga to'lov",
+        "PaymentPerMonth": "Oylik to'lov",
         "Profit": "Foyda",
         "DealId": "Bitim ID",
         "Investor": "Investor",
@@ -113,7 +113,10 @@
         "Create": "Yaratish",
         "NotVerified": "Tasdiqlanmagan",
         "Verified": "Tasdiqlangan",
-        "NasiyaPrice": "Nasiya narxi"
+        "NasiyaPrice": "Nasiya narxi",
+        "Previous": "Oldingi",
+        "Next": "Keyingi",
+        "Page": "Sahifa"
     },
     "PaymentsView": {
         "PaymentHistory": "To'lov tarixi",
