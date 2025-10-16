@@ -55,7 +55,7 @@
                         <div class="flex items-start justify-between gap-3">
                             <div class="min-w-0">
                                 <div class="text-gray-900 font-semibold">{{ payment.paymentDate }}</div>
-                                <div class="text-xs text-gray-600 mt-1 break-words">{{ payment.comments || '-' }}</div>
+                                <div class="text-xs text-gray-600 mt-1 break-words">{{ payment.comments || $t('Common.NoComments') }}</div>
                             </div>
                             <div class="shrink-0 text-base font-bold text-gray-900">${{ payment.amount }}</div>
                         </div>
@@ -80,12 +80,12 @@
                                 <td class="py-3 px-4 sm:px-6 text-gray-700">${{ payment.amount }}</td>
                                 <td class="py-3 px-4 sm:px-6">
                                     <span class="inline-flex items-center gap-2">
-                                        <svg v-if="(payment.status || '').toLowerCase() !== 'created'" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <!-- <svg v-if="(payment.status || '').toLowerCase() !== 'created'" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                         </svg>
                                         <svg v-else xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
+                                        </svg> -->
                                         <span :class="(payment.status || '').toLowerCase() === 'created' ? 'text-red-600 font-semibold' : 'text-green-600 font-semibold'">
                                             {{ (payment.status || '').toLowerCase() === 'created' ? ($t('Common.NotVerified') || 'Not verified') : ($t('Common.Verified') || 'Verified') }}
                                         </span>

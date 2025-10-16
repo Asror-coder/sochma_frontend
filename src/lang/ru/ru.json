@@ -118,7 +118,9 @@
         "Previous": "Предыдущая",
         "Next": "Следующая",
         "Page": "Страница",
-        "Status": "Статус"
+        "Status": "Статус",
+        "NoComments": "Нет комментариев",
+        "RequiredFields": "Пожалуйста, заполните обязательные поля."
     },
     "PaymentsView": {
         "PaymentHistory": "История платежей",

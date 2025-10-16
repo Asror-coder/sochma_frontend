@@ -119,7 +119,9 @@
         "Previous": "Oldingi",
         "Next": "Keyingi",
         "Page": "Sahifa",
-        "Status": "Holat"
+        "Status": "Holat",
+        "NoComments": "Izohlar yo'q",
+        "RequiredFields": "Iltimos, kerakli maydonlarni to'ldiring."
     },
     "PaymentsView": {
         "PaymentHistory": "To'lov tarixi",
