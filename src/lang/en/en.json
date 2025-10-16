@@ -119,7 +119,8 @@
         "NasiyaPrice": "Nasiya price",
         "Previous": "Previous",
         "Next": "Next",
-        "Page": "Page"
+        "Page": "Page",
+        "Status": "Status"
     },
     "PaymentsView": {
         "PaymentHistory": "Payment History",

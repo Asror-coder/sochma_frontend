@@ -15,7 +15,8 @@
         "logout": "Chiqish"
     },
     "PaymentsPage" : {
-        "Payments" : "To'lovlar"
+        "Payments" : "To'lovlar",
+        "NewPayment": "Yangi to'lov"
     },
     "HomePage" : {
         "Home" : "Bosh sahifa",
@@ -117,7 +118,8 @@
         "NasiyaPrice": "Nasiya narxi",
         "Previous": "Oldingi",
         "Next": "Keyingi",
-        "Page": "Sahifa"
+        "Page": "Sahifa",
+        "Status": "Holat"
     },
     "PaymentsView": {
         "PaymentHistory": "To'lov tarixi",

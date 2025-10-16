@@ -15,7 +15,8 @@
         "logout": "Выйти"
     },
     "PaymentsPage" : {
-        "Payments" : "Платежи"
+        "Payments" : "Платежи",
+        "NewPayment": "Новый платеж"
     },
     "HomePage" : {
         "Home" : "Главная",
@@ -116,7 +117,8 @@
         "NasiyaPrice": "Насия цена",
         "Previous": "Предыдущая",
         "Next": "Следующая",
-        "Page": "Страница"
+        "Page": "Страница",
+        "Status": "Статус"
     },
     "PaymentsView": {
         "PaymentHistory": "История платежей",
