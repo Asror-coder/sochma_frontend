@@ -2,7 +2,9 @@
   <main class="min-h-screen flex flex-col items-center bg-gradient-to-br from-blue-50 to-blue-100 pt-10 pb-20 sm:pt-14">
     <!-- Hero Section -->
     <section class="w-full max-w-3xl flex flex-col items-center px-4">
-      <h1 class="text-3xl leading-tight sm:text-5xl font-extrabold text-blue-700 text-center mb-4 drop-shadow-sm">{{$t('HomePage.heroTitle', { name: userFullName })}}</h1>
+      <h1 class="text-3xl leading-tight sm:text-5xl font-extrabold text-blue-700 text-center mb-4 drop-shadow-sm">{{$t('HomePage.heroTitle',)}}</h1>
+      <h1 class="text-3xl leading-tight sm:text-5xl font-extrabold text-blue-700 text-center mb-4 drop-shadow-sm">{{ userFullName }}</h1>
+
       <p class="text-base sm:text-xl text-gray-700 text-center mb-6 max-w-2xl">{{ $t('HomePage.welcomeMessage') }}</p>
       <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto justify-center mb-10">
         <router-link :to="{name: 'newDeal'}" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-3.5 px-6 rounded-xl shadow-md shadow-blue-200 text-center transition">{{$t('HomePage.createDealBtn')}}</router-link>

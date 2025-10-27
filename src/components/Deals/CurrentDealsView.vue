@@ -52,25 +52,22 @@
               <!-- Payment info -->
               <div class="flex-1 order-2 md:order-1 md:mt-0 mt-4">
                 <div class="bg-gray-50 rounded-lg p-4 flex flex-col gap-2">
-                  <div class="grid grid-cols-2 sm:grid-cols-3 items-center gap-0">
+                  <!-- Rows changed to flex with justify-between to keep values all the way to the right on desktop -->
+                  <div class="flex items-center justify-between gap-2">
                     <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.Investment') }}</span>
-                    <span class="font-semibold text-gray-700 text-right col-start-2 sm:col-start-auto">${{ deal.investmentAmount }}</span>
-                    <span class="hidden sm:inline-block"></span>
+                    <span class="font-semibold text-gray-700 text-right">${{ deal.investmentAmount }}</span>
                   </div>
-                  <div class="grid grid-cols-2 sm:grid-cols-3 items-center gap-0">
+                  <div class="flex items-center justify-between gap-2">
                     <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PayedUpAmount') }}</span>
-                    <span class="font-semibold text-gray-700 text-right col-start-2 sm:col-start-auto">${{ deal.payedUpAmount }}</span>
-                    <span class="hidden sm:inline-block"></span>
+                    <span class="font-semibold text-gray-700 text-right">${{ deal.payedUpAmount }}</span>
                   </div>
-                  <div class="grid grid-cols-2 sm:grid-cols-3 items-center gap-0">
+                  <div class="flex items-center justify-between gap-2">
                     <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PeriodMonth') }}</span>
-                    <span class="font-semibold text-gray-700 text-right col-start-2 sm:col-start-auto">{{ deal.periodMonth }}</span>
-                    <span class="hidden sm:inline-block"></span>
+                    <span class="font-semibold text-gray-700 text-right">{{ deal.periodMonth }}</span>
                   </div>
-                  <div class="grid grid-cols-2 sm:grid-cols-3 items-center gap-0">
+                  <div class="flex items-center justify-between gap-2">
                     <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PayedMonths') }}</span>
-                    <span class="font-semibold text-gray-700 text-right col-start-2 sm:col-start-auto">{{ deal.payedMonths }}</span>
-                    <span class="hidden sm:inline-block"></span>
+                    <span class="font-semibold text-gray-700 text-right">{{ deal.payedMonths }}</span>
                   </div>
                   <!-- Repayment progress: dashed line per month -->
                   <div class="mt-3">
