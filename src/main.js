@@ -22,7 +22,9 @@ const i18n = createI18n({
 
 // Set the base URL for axios
 import axios from 'axios'
-axios.defaults.baseURL = 'http://157.173.198.177:5115/'
+// axios.defaults.baseURL = 'http://157.173.198.177:5115/'
+
+axios.defaults.baseURL = 'https://api.sochma.uz'
 
 // Vuex store setup
 import { createStore } from 'vuex'
