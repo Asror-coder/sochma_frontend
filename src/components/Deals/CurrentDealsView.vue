@@ -30,12 +30,19 @@
           <div
             v-for="deal in deals"
             :key="deal.dealId || deal.id"
-            class="cursor-pointer w-full bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl p-4 sm:p-6 transition-all"
+            class="relative cursor-pointer w-full bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl p-4 sm:p-6 transition-all"
             @click="goToDealDetail(deal)"
           >
+            <!-- Payment day badge in the upper-right corner (no label) -->
+            <div class="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 pointer-events-none">
+              <span class="inline-flex flex-col items-stretch select-none drop-shadow">
+                <span class="w-9 sm:w-10 h-2 bg-red-500 rounded-t-md"></span>
+                <span class="w-9 sm:w-10 h-8 border border-gray-300 border-t-0 rounded-b-md flex items-center justify-center font-bold text-gray-800 text-xs sm:text-sm leading-none bg-white">{{ deal.paymentDayOfMonth }}</span>
+              </span>
+            </div>
             <div class="flex flex-col md:flex-row md:items-center md:justify-between md:gap-x-32">
               <!-- Product info first on mobile -->
-              <div class="flex-1 order-1 md:order-2 md:mt-0 md:ml-4">
+              <div class="flex-1 order-1 md:order-2 md:mt-0 md:ml-4 pr-16 sm:pr-20">
                 <div class="mb-1">
                   <span class="font-bold text-xl sm:text-2xl text-gray-800">{{ deal.brand }} {{ deal.model }}</span>
                 </div>
@@ -61,14 +68,20 @@
                     <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PayedUpAmount') }}</span>
                     <span class="font-semibold text-gray-700 text-right">${{ deal.payedUpAmount }}</span>
                   </div>
-                  <div class="flex items-center justify-between gap-2">
+                  <!-- <div class="flex items-center justify-between gap-2">
                     <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PeriodMonth') }}</span>
                     <span class="font-semibold text-gray-700 text-right">{{ deal.periodMonth }}</span>
                   </div>
                   <div class="flex items-center justify-between gap-2">
                     <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PayedMonths') }}</span>
                     <span class="font-semibold text-gray-700 text-right">{{ deal.payedMonths }}</span>
+                  </div> -->
+                  <!-- Monthly payment -->
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-gray-500 whitespace-nowrap">{{ $t('DealsPage.PaymentPerMonth') }}</span>
+                    <span class="font-semibold text-gray-700 text-right">${{ deal.monthlyPayment }}</span>
                   </div>
+                  
                   <!-- Repayment progress: dashed line per month -->
                   <div class="mt-3">
                     <div class="flex gap-1 w-full" :title="`${deal.payedMonths}/${deal.periodMonth}`">
